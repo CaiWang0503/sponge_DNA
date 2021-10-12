@@ -204,7 +204,16 @@ mv ./demulti/swarm_output/spongetank_SWARM3_output.counts.csv  spongetank_SWARM3
 #Rscript ~/peter/applications/R_scripts_metabarpark/owi_combine -i cobble2012.ecotag.fasta.annotated.csv -a swarm/cobble2012_SWARM13_output.counts.csv -o cobble2012_all_SWARM_FINAL_MOTUs.csv
 Rscript ./R_scripts_metabarpark/owi_combine -i spongetank_SWARM3.ecotag.annotated_id.csv -a spongetank_SWARM3_output.counts.csv -o spongetank_all_SWARM_FINAL_MOTUs.csv
 sed 's/;/,/g' spongetank_all_SWARM_FINAL_MOTUs.csv > spongetank_all_SWARM_FINAL_OTU.csv
+# i delete "cut" column manually for "spongetank_all_SWARM_FINAL_OTU.csv"
 
 #echo collapse MOTUs
 Rscript ./R_scripts_metabarpark/owi_collapse -s 16 -e 116 -t 0.50 -i spongetank_all_SWARM_FINAL_OTU.csv
 #-s 14 Sample columns start; -e sample columns end. Default = 98; -t 0.50 Threshold for collapsing
+
+#clean up
+mv spongetank_SWARM3* ./intermediate
+mv spongetank.new.tab ./intermediate
+mv spongetank_all_SWARM_FINAL_MOTUs.csv ./intermediate
+#move final files to github folder for upload
+cp spongetank_all_SWARM_FINAL_OTU_collapsed.csv /Users/wang/src/sponge_DNA/
+cp spongetank_all_SWARM_FINAL_OTU.csv /Users/wang/src/sponge_DNA/
