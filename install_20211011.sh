@@ -57,3 +57,13 @@ make
 
 ###########path################
 export PATH=$PATH:~/applications/seqtk/
+
+############R packages###########################
+R
+install.packages(c("ape","optparse"))
+
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install()
+quit()
+#annotate installing BiocManager in "owi_obifasta2vsearch"

@@ -1,5 +1,5 @@
 ##################################log in##################################
-ssh  beswcai@genome.ljmu.ac.uk #150.204.78.6
+ssh beswcai@genome.ljmu.ac.uk #150.204.78.6
 #password
 FuzzyL0g1c!
 ssh genome2 #go to genome2
@@ -15,6 +15,8 @@ screen #go into virtual environment
 #make a directory for reference sequences
 mkdir db_obitools
 mv EMBL_r143* ./db_obitools # move all the files into this folder
+#mv to genome2
+scp -r db_obitools beswcai@genome2.ljmu.ac.uk:/home/genome2/beswcai/tank/
 #move data to genome2, stay in genome1 cope files to genome2
 scp -r 3_L001-ds.815457c2482c4a36a6bfa50baeb62673 beswcai@genome2.ljmu.ac.uk:/home/genome2/beswcai/tank/
 scp -r 4_L001-ds.3401d0eec9344c9a99065dea0e58da1c beswcai@genome2.ljmu.ac.uk:/home/genome2/beswcai/tank/
@@ -38,8 +40,9 @@ mv /home/genome2/beswcai/tank/4_L001-ds.3401d0eec9344c9a99065dea0e58da1c/SpongeD
 ##the original peter shum tutoria can be find here: https://github.com/shump2/cobble2012/blob/master/obi_cobble.job
 ###########################################################################################
 #setup all the PATH here, and then can use directly
-vsearch=~/applications/vsearch-2.18.0/bin/vsearch #usage:$vsearch
+vsearch=~/applications/vsearch-2.18.0/bin/vsearch #usage: $vsearch
 swarm=~/applications/swarm/src/swarm #usage: $swarm
+export PATH=$PATH:~/applications/seqtk/
 #############1. quality control raw data############
 mkdir fastqc
 fastqc -o fastqc/ --extract -f fastq *.fastq
@@ -69,70 +72,111 @@ done
 #obicut -e 150 SpongeDNA-obj2-LIB02_S4_L001_R1_001.fastq > SpongeDNA-obj2-LIB02_S4_L001_R1_trim150.fastq
 #obicut -e 150 SpongeDNA-obj2-LIB02_S4_L001_R2_001.fastq > SpongeDNA-obj2-LIB02_S4_L001_R2_trim150.fastq
 
-#check files
-stat SpongeDNA-obj1-LIB01_S3_L001_R2_trim150.fastq
+#check files size
+ls -lht SpongeDNA-obj1-LIB01_S3_L001_R2_trim150.fastq
 #echo Paired-end alignment. Annotate the reads with quality 40 and split the output in two files
 #illuminapairedend -r cobb12_trim180.R2.fastq cobb12_trim250.R1.fastq | obiannotate -S goodali:'"Good_cobbCOI" if score>40.00 else "Bad_cobbCOI"' | obisplit -t goodali
 illuminapairedend -r SpongeDNA-obj1-LIB01_S3_L001_R1_trim150.fastq SpongeDNA-obj1-LIB01_S3_L001_R2_trim150.fastq | obiannotate -S goodali:'"Good_sp12s.s3" if score>40.00 else "Bad_sp12s.s3"' | obisplit -t goodali
 illuminapairedend -r SpongeDNA-obj2-LIB02_S4_L001_R1_trim150.fastq SpongeDNA-obj2-LIB02_S4_L001_R2_trim150.fastq | obiannotate -S goodali:'"Good_sp12s.s4" if score>40.00 else "Bad_sp12s.s4"' | obisplit -t goodali
+ls -lht Good_sp12s.s4.fastq #check files size, make sure it's no empty
 
 #the following command only use good sequences
 ###########3. convert fastq to fasta for demultiplexing in parallel######
 seqtk seq -a Good_sp12s.s3.fastq > Good_sp12s_s3.fasta
 seqtk seq -a Good_sp12s.s4.fastq > Good_sp12s_s4.fasta
 
+#clean folder before moving on
+mkdir intermediate
+mv *.fastq ./intermediate
+#rm -rf 4_L001-ds.3401d0eec9344c9a99065dea0e58da1c
+#rm -rf 3_L001-ds.815457c2482c4a36a6bfa50baeb62673
+
 ###########4. Assign each sequence record to the corresponding sample/marker combination######
 mkdir demulti
-ngsfilter -t sponge_tank_L3_ngsfilter.txt --fasta-output -u unidentified_sp12s_s3.fastq Good_sp12s_s3.fasta --DEBUG > sp12stank_s3.filtered.fasta
-ngsfilter -t sponge_tank_L4_ngsfilter.txt --fasta-output -u unidentified_sp12s_s4.fastq Good_sp12s_s4.fasta --DEBUG > sp12stank_s4.filtered.fasta
+ngsfilter -t sponge_tank_L3_ngsfilter.txt --fasta-output -u unidentified_sp12s_s3.fasta Good_sp12s_s3.fasta --DEBUG > sp12stank_s3.filtered.fasta
+ngsfilter -t sponge_tank_L4_ngsfilter.txt --fasta-output -u unidentified_sp12s_s4.fasta Good_sp12s_s4.fasta --DEBUG > sp12stank_s4.filtered.fasta
+ls -lht sp12stank_s3.filtered.fasta
+mv sp12stank* ./demulti
+mv unidentified* ./demulti
+#concatenate all the separate *.filtered.fasta into a single file
+ngsfilter_results=~/tank/demulti
+cat $(find $ngsfilter_results -name '*.filtered.fasta' | xargs)> demulti/spongetank.filtered.fasta
+cat $(find $ngsfilter_results -name '*unidentified*' | xargs)> demulti/unidentified.spongetank.fasta
+cd demulti
+ls -lht spongetank.filtered.fasta
 
-mv sp12stank.filtered.fasta ./demulti/sp12stank.filtered.fasta
-
-###########5. Filter the seqs with length between 140 and 220 bp and with no 'N'##########
-#echo Filter the seqs with length between 140 and 220 bp and with no 'N' # -p 'count>=10'
-obigrep -p 'seq_length>140' -p 'seq_length<220' -s '^[ACGT]+$' demulti/sp12stank.filtered_sorted.fasta > sp12stank.filtered_length.fasta
+###########5. Filter seqs##########
+#echo Filter the seqs with length between 140 and 220 bp and with no 'N' #-p 'count>=10'
+#obigrep -l 140 -L 220 -s '^[ACGT]+$' spongetank.filtered.fasta > spongetank.filtered_length.fasta
+obigrep -p 'seq_length>140' -p 'seq_length<220' spongetank.filtered.fasta > spongetank.filtered_length.fasta
+#'^[ACGT]+$' do not work! why?
+obigrep -s '^[ACGT]+$' spongetank.filtered_length.fasta> spongetank.filtered_length_noN.fasta
+ls -lht spongetank.filtered_length_noN.fasta
 
 ###########6. Get the count statistics##########
 #echo Calculate stats per sample
-obistat -c sample -a seq_length sp12stank.filtered_length.fasta > sample_stats_sp12stank.length_filter.txt |  \sort -nk1 | head -20
+obistat -c sample -a seq_length spongetank.filtered_length.fasta > sample_stats_spongetank.length_filter.txt
 
 ###########7. Dereplicate reads into uniq sequences##########
 #echo Group the unique seqs
-obiuniq -m sample sp12stank.filtered_length.fasta > sp12stank.unique.fasta
+obiuniq -m sample spongetank.filtered_length.fasta > spongetank.unique.fasta
+head -5 spongetank.unique.fasta
 
 ###########8. Exchange the identifier to a short index##########
-obiannotate --seq-rank cobble2012.unique.fasta | obiannotate --set-identifier '"'spon'_%10d" % seq_rank' > spongetanks3.new.fasta
-Rscript ~/applications/R_scripts_metabarpark/owi_obifasta2vsearch -i cobble2012.new.fasta -o cobble2012.vsearch.fasta
-sed 's/ ;/;/g' cobble2012.vsearch.fasta > cobble2012.vsearch.mod.fasta
+#if i use "%10d" here, swarm will show error
+obiannotate --seq-rank spongetank.unique.fasta | obiannotate --set-identifier '"'tank'_%0d" % seq_rank' > spongetank.new.fasta
+#obiannotate --seq-rank spongetank.unique.fasta  > spongetank.seq_rank.fasta
+#head -5 spongetank.seq_rank.fasta
+head -5 spongetank.new.fasta
 
-###########9. CHIMERA DETECTION ##########
+###########9. convert to vsearch format#####
+Rscript ~/applications/R_scripts_metabarpark/owi_obifasta2vsearch -i spongetank.new.fasta -o spongetank.vsearch.fasta
+head -5  spongetank.vsearch.fasta
+sed 's/ ;/;/g' spongetank.vsearch.fasta > spongetank.vsearch.mod.fasta
+#head -5  spongetank.vsearch.mod.fasta
+wc -l spongetank.vsearch.mod.fasta
+
+###########10. CHIMERA DETECTION ##########
 #echo Run UCHIME de novo in VSEARCH
 mkdir vsearch_output
-$vsearch --uchime_denovo cobble2012.vsearch.mod.fasta --sizeout --nonchimeras vsearch/cobble2012.nonchimeras.fasta --chimeras vsearch/cobble2012.chimeras.fasta --threads 28 --uchimeout vsearch/cobble2012.uchimeout2.txt &> vsearch/log.cobble2012_chimeras
-#sed 's/;/ ;/g' vsearch/cobble2012.nonchimeras.fasta |grep -e ">" | awk 'sub(/^>/, "")' | awk '{print $1}' > vsearch/cobble2012.nonchimeras.txt # text file used for owi_recount_sumaclust step
+$vsearch --uchime_denovo spongetank.vsearch.mod.fasta --sizeout --nonchimeras vsearch_output/spongetank.nonchimeras.fasta --chimeras vsearch_output/spongetank.chimeras.fasta --threads 28 --uchimeout vsearch_output/spongetank.uchimeout2.txt &> vsearch_output/log.spongetank_chimeras
+sed 's/;/ ;/g' vsearch_output/spongetank.nonchimeras.fasta |grep -e ">" | awk 'sub(/^>/, "")' | awk '{print $1}' > vsearch_output/spongetank.nonchimeras.txt # text file used for owi_recount_sumaclust step
+wc -l ./vsearch_output/spongetank.nonchimeras.fasta
+head -10 ./vsearch_output/spongetank.nonchimeras.fasta
 
-###########10. CLUSTERING ##########
+###########11. CLUSTERING ##########
 #echo swarm using vsearch nonchimeras file
 mkdir swarm_output
-$swarm -d 3 -z -t 10 -o swarm_output/cobble2012_SWARM3_output -s swarm_output/cobble2012_SWARM3_stats -w swarm_output/cobble2012_SWARM3_seeds.fasta vsearch_output/cobble2012.nonchimeras.fasta
+$swarm -d 3 -z -t 10 -o swarm_output/spongetank_SWARM3_output -s swarm_output/spongetank_SWARM3_stats -w swarm_output/spongetank_SWARM3_seeds.fasta vsearch_output/spongetank.nonchimeras.fasta
+wc -l ./swarm_output/spongetank_SWARM3_seeds.fasta
+head -5 ./swarm_output/spongetank_SWARM3_seeds.fasta
 
 ################################
 ##### TAXONOMIC ASSIGNMENT #####
 ################################
-#mkdir ecotag
-#cd ecotag
+scp -r beswcai@genome.ljmu.ac.uk:/home/beswcai/db_obitools/  /Users/wang/Desktop/
+#Use ecoPCR to simulate an in silico` PCR for teleo2 primer
+ecoPCR -d ./taxo_peter20211011/EMBL_r143 -e 3 -l 140 -L 220 AAACTCGTGCCAGCCACC GGGTATCTAATCCCAGTTTG > tele02.ecopcr
+#Clean the database
+obigrep -d ./taxo_peter20211011/EMBL_r143 --require-rank=species --require-rank=genus --require-rank=family tele02.ecopcr > tele02_clean.fasta
+obiuniq -d ./taxo_peter20211011/EMBL_r143 tele02_clean.fasta > tele02_clean_uniq.fasta
+obigrep -d ./taxo_peter20211011/EMBL_r143 --require-rank=family tele02_clean_uniq.fasta > tele02_clean_uniq_clean.fasta
+obiannotate --uniq-id tele02_clean_uniq_clean.fasta > db_tele02.fasta
+
+####################################################################
+ecotag -d ./taxo_peter20211011/EMBL_r143 -R db_tele02.fasta --sort=count -r ./demulti/swarm_output/spongetank_SWARM3_seeds.fasta > spongetank_SWARM3.ecotag.fasta
+
+
+mkdir ecotag
+cd ecotag
 #echo here use the script "submit_parallel_ecotag.sh" to parallelize the ecotag command, you need to edit the paths to you sumaclust generated
 #echo fasta file, e.g. cobble2012.sumaclust95.centers.fasta, and ecopcr database. This script generates files and folders by splitting the
 #echo cobble2012.sumaclust95.centers.fasta file into 100 sequences per file and 100 files per folder. It will generate  as many files/folders.
 #echo You can set the split files into hatever you like and it will run each file as a separate job. Typically 100 sequneces per file run in about ~10-15 minutes.
-
-#sh submit_parallel_ecotag.sh
-
-######################
-
+sh submit_parallel_ecotag.sh
 #echo Once the previous step has complete, e.g. overnight, concatenate all *.ecotag.fasta from all folders
-#ecotag_results=~/stanford/Cobble_final/ecotag_all/
-#cat $(find $ecotag_results -name '*.ecotag.fasta' | xargs)> ecotag_all/cobble2012.ecotag.fasta
+ecotag_results=~/stanford/Cobble_final/ecotag_all/
+cat $(find $ecotag_results -name '*.ecotag.fasta' | xargs)> ecotag_all/cobble2012.ecotag.fasta
 
 #echo To sort fasta file numerically
 #echo install cdbfasta
@@ -148,14 +192,14 @@ $swarm -d 3 -z -t 10 -o swarm_output/cobble2012_SWARM3_output -s swarm_output/co
 ######################
 ## R scripts for reformatting metabarcoding databases CREDIT: OWEN WANGENSTEEN Find R scripts here: https://github.com/metabarpark/R_scripts_metabarpark
 #echo Add taxa above order level
-#Rscript ~/peter/applications/R_scripts_metabarpark/owi_add_taxonomy ecotag_all/cobble2012.ecotag_sorted.fasta cobble2012.ecotag.fasta.annotated.csv
+Rscript ~/peter/applications/R_scripts_metabarpark/owi_add_taxonomy ecotag_all/cobble2012.ecotag_sorted.fasta cobble2012.ecotag.fasta.annotated.csv
 
 #echo recount abundance by sample
-#obitab -o cobble2012.new.fasta > cobble2012.new.tab
-#Rscript ~/peter/applications/R_scripts_metabarpark/owi_recount_swarm swarm/cobble2012_SWARM13_output cobble2012.new.tab
+obitab -o cobble2012.new.fasta > cobble2012.new.tab
+Rscript ~/peter/applications/R_scripts_metabarpark/owi_recount_swarm swarm/cobble2012_SWARM13_output cobble2012.new.tab
 
 #echo combine ecotag and abundance files
-#Rscript ~/peter/applications/R_scripts_metabarpark/owi_combine -i cobble2012.ecotag.fasta.annotated.csv -a swarm/cobble2012_SWARM13_output.counts.csv -o cobble2012_all_SWARM_FINAL_MOTUs.csv
+Rscript ~/peter/applications/R_scripts_metabarpark/owi_combine -i cobble2012.ecotag.fasta.annotated.csv -a swarm/cobble2012_SWARM13_output.counts.csv -o cobble2012_all_SWARM_FINAL_MOTUs.csv
 
 #echo collapse MOTUs
-#Rscript ~/peter/applications/R_scripts_metabarpark/owi_collapse -s 14 -e 106 -i cobble2012_all_SWARM_FINAL_MOTUs.csv
+Rscript ~/peter/applications/R_scripts_metabarpark/owi_collapse -s 14 -e 106 -i cobble2012_all_SWARM_FINAL_MOTUs.csv
