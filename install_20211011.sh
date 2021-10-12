@@ -10,14 +10,11 @@ chmod 755 fastqc
 /Users/wang/src/FastQC/fastqc -help
 
 #install cdbfasta
-#https://github.com/gpertea/cdbfasta
-#Clone this repository and run 'make' in the cdbfasta directory.
-#Make sure you have the zlib library and development files installed on your linux system.
-#Running 'make' should produce the binaries 'cdbfasta' (the indexer program)
-git clone https://github.com/gpertea/cdbfasta.git
-cd cdbfasta
-#~/src/cdbfasta-master
-make
+#echo To sort fasta file numerically
+#echo install cdbfasta
+#git clone https://github.com/gpertea/cdbfasta.git
+#cd cdbfasta/
+#make
 
 #install seqtk
 git clone https://github.com/lh3/seqtk.git;
