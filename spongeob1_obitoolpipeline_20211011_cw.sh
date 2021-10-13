@@ -128,6 +128,7 @@ obiannotate --seq-rank spongetank.unique.fasta | obiannotate --set-identifier '"
 head -5 spongetank.new9.fasta
 
 ###########9. convert to vsearch format#####
+#i annotate the install command in the file  "owi_obifasta2vsearch", because the install code is different from the old R version.  
 #Rscript ~/applications/R_scripts_metabarpark/owi_obifasta2vsearch -i spongetank.new10.fasta -o spongetank.vsearch.fasta
 Rscript /Users/wang/Desktop/ob1_mbc/R_scripts_metabarpark/owi_obifasta2vsearch -i spongetank.new9.fasta -o spongetank.vsearch.fasta
 head -5  spongetank.vsearch.fasta
