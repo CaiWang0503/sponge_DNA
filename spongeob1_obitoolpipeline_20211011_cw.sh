@@ -107,19 +107,17 @@ ls -lht spongetank.filtered.fasta # make sure it concatenates successful
 
 ###########5. Filter seqs##########
 #echo Filter the seqs with length between 140 and 220 bp and with no 'N' #-p 'count>=10'
-#obigrep -p 'seq_length>140' -p 'seq_length<220' -s '^[ACGT]+$' demulti/spongetank.filtered.fasta > spongetank.filtered_length.fasta
-obigrep -p 'seq_length>140' -p 'seq_length<220' spongetank.filtered.fasta > spongetank.filtered_length.fasta
-#'^[ACGT]+$' do not work! why?
-#obigrep -s '^[ACGT]+$' spongetank.filtered_length.fasta > spongetank.filtered_length_noN.fasta
+#'^[ACGT]+$' do not work! if i paste directly, i have to type by hand, because atom do not recognize this is a python expression.  
+obigrep -p 'seq_length>140' -p 'seq_length<220' -s '^[ACGT]+$' spongetank.filtered.fasta > spongetank.filtered_length_noN.fasta
 #ls -lht spongetank.filtered_length_noN.fasta
 
 ###########6. Get the count statistics##########
 #echo Calculate stats per sample
-obistat -c sample -a seq_length spongetank.filtered_length.fasta > sample_stats_spongetank.length_filter.txt
+obistat -c sample -a seq_length spongetank.filtered_length_noN.fasta > sample_stats_spongetank.length_filter.txt
 
 ###########7. Dereplicate reads into uniq sequences##########
 #echo Group the unique seqs
-obiuniq -m sample spongetank.filtered_length.fasta > spongetank.unique.fasta
+obiuniq -m sample spongetank.filtered_length_noN.fasta > spongetank.unique.fasta
 head -5 spongetank.unique.fasta
 
 ###########8. Exchange the identifier to a short index##########
