@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "tank_overview"
 author: "cai wang"
 date: "14/10/2021"
 output: html_document
@@ -10,7 +10,6 @@ library(tidyverse)
 library(phyloseq)
 library(decontam)
 ```
-
 
 ```{r separate sequnce}
 OTUseq<-read.csv("spongetank_all_SWARM_FINAL_OTU_20211011.csv", header=TRUE)
@@ -72,7 +71,7 @@ OTU <- as.matrix(OTU)
 physeq_spongetank = phyloseq(otu_table(OTU, taxa_are_rows = TRUE), tax_table(TAX), sample_data(sample_data))
 ```
 
-```{r}
+```{r decontam}
 contamdf.freq <- isContaminant(physeq_spongetank, method="frequency", conc="quant_reading",batch = "RUN")
 table(contamdf.freq$contaminant)
 decontam.T=contamdf.freq %>% filter(contaminant=="TRUE")
@@ -87,7 +86,9 @@ ps.noncontam <- prune_taxa(!contamdf.freq$contaminant, physeq_spongetank)
 save(ps.noncontam,physeq_spongetank,file = "physeq_spongetank_noncontam.rdata")
 ```
 
-```{r}
+#######statistical analysis start here##########
+```{r read test}
+load("physeq_spongetank_noncontam.rdata")
 OTU<- data.frame(t(as.data.frame(otu_table(ps.noncontam))))
 metadata<- data.frame(sample_data(ps.noncontam)) 
 #OTU.tank<- OTU %>% filter (metadata$experiment=="tank")
