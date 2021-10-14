@@ -1,0 +1,2828 @@
+
+####processing: tank_000000028 #####
+---hits: tank_000010478 
+---hits: tank_000019909 
+---hits: tank_000068873 
+---hits: tank_000000095 
+---hits: tank_000081127 
+---hits: tank_000001747 
+---hits: tank_000015090 
+---hits: tank_000000006 
+---hits: tank_000000158 
+---hits: tank_000005093
+---potential parent: 
+No parent found!
+
+####processing: tank_000000005 #####
+---hits: tank_000041543 
+---hits: tank_000070122 
+---hits: tank_000001046 
+---hits: tank_000033826 
+---hits: tank_000036643 
+---hits: tank_000085106 
+---hits: tank_000036268 
+---hits: tank_000071290 
+---hits: tank_000018178 
+---hits: tank_000018415
+---potential parent: 
+No parent found!
+
+####processing: tank_000000556 #####
+---hits: tank_000071153 
+---hits: tank_000091470 
+---hits: tank_000045041 
+---hits: tank_000045788 
+---hits: tank_000069871 
+---hits: tank_000056242 
+---hits: tank_000067551 
+---hits: tank_000035908 
+---hits: tank_000064576 
+---hits: tank_000070022
+---potential parent: 
+No parent found!
+
+####processing: tank_000006238 #####
+---hits: tank_000043426 
+---hits: tank_000060724 
+---hits: tank_000007238
+---potential parent: 
+No parent found!
+
+####processing: tank_000000013 #####
+---hits: tank_000038987 
+---hits: tank_000091872 
+---hits: tank_000038112 
+---hits: tank_000000020 
+---hits: tank_000002205 
+---hits: tank_000001384 
+---hits: tank_000029145 
+---hits: tank_000000328 
+---hits: tank_000000009 
+---hits: tank_000000100
+---potential parent: 
+No parent found!
+
+####processing: tank_000000158 #####
+---hits: tank_000000006 
+---hits: tank_000063401 
+---hits: tank_000005093 
+---hits: tank_000001747 
+---hits: tank_000000095 
+---hits: tank_000002653 
+---hits: tank_000000028
+---potential parent: tank_000000028
+------checking: tank_000000028
+------relative cooccurence: 0.821428571428571
+No parent found!
+
+####processing: tank_000000017 #####
+---hits: tank_000033270 
+---hits: tank_000054130 
+---hits: tank_000003696
+---potential parent: 
+No parent found!
+
+####processing: tank_000001384 #####
+---hits: tank_000002205 
+---hits: tank_000091872 
+---hits: tank_000000013 
+---hits: tank_000000020 
+---hits: tank_000038112 
+---hits: tank_000038987 
+---hits: tank_000029145 
+---hits: tank_000000328
+---potential parent: tank_000000013
+------checking: tank_000000013
+------relative cooccurence: 0.636363636363636
+No parent found!
+
+####processing: tank_000000035 #####
+---hits: tank_000007732 
+---hits: tank_000013996 
+---hits: tank_000004195 
+---hits: tank_000006051 
+---hits: tank_000009377 
+---hits: tank_000019236 
+---hits: tank_000013107
+---potential parent: 
+No parent found!
+
+####processing: tank_000000880 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000033342 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000007238 #####
+---hits: tank_000006238 
+---hits: tank_000043426 
+---hits: tank_000060724
+---potential parent: tank_000006238
+------checking: tank_000006238
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 0.690789473684211
+No parent found!
+
+####processing: tank_000035140 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000000009 #####
+---hits: tank_000027673 
+---hits: tank_000025915 
+---hits: tank_000020892 
+---hits: tank_000019114 
+---hits: tank_000016655 
+---hits: tank_000032140 
+---hits: tank_000001330 
+---hits: tank_000000029 
+---hits: tank_000000013 
+---hits: tank_000010874
+---potential parent: tank_000000013
+------checking: tank_000000013
+------relative cooccurence: 0.571428571428571
+No parent found!
+
+####processing: tank_000000006 #####
+---hits: tank_000000158 
+---hits: tank_000005093 
+---hits: tank_000063401 
+---hits: tank_000000095 
+---hits: tank_000001747 
+---hits: tank_000000028 
+---hits: tank_000000078 
+---hits: tank_000002653
+---potential parent: tank_000000028 
+---potential parent: tank_000000158
+------checking: tank_000000028
+------relative cooccurence: 0.846153846153846
+------checking: tank_000000158
+------relative cooccurence: 0.769230769230769
+No parent found!
+
+####processing: tank_000033674 #####
+---hits: tank_000000018 
+---hits: tank_000001046 
+---hits: tank_000041543 
+---hits: tank_000000005 
+---hits: tank_000018178 
+---hits: tank_000036643 
+---hits: tank_000070122 
+---hits: tank_000036268 
+---hits: tank_000033826 
+---hits: tank_000085106
+---potential parent: tank_000000005
+------checking: tank_000000005
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 0.218697829716194
+No parent found!
+
+####processing: tank_000027790 #####
+---hits: tank_000033433 
+---hits: tank_000062780 
+---hits: tank_000040660 
+---hits: tank_000033846 
+---hits: tank_000054037
+---potential parent: 
+No parent found!
+
+####processing: tank_000034047 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000001101 #####
+---hits: tank_000045624
+---potential parent: 
+No parent found!
+
+####processing: tank_000000021 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000000045 #####
+---hits: tank_000011895 
+---hits: tank_000000019 
+---hits: tank_000014578 
+---hits: tank_000010874
+---potential parent: 
+No parent found!
+
+####processing: tank_000000020 #####
+---hits: tank_000002205 
+---hits: tank_000029145 
+---hits: tank_000000013 
+---hits: tank_000001384 
+---hits: tank_000091872 
+---hits: tank_000038112 
+---hits: tank_000038987 
+---hits: tank_000000100
+---potential parent: tank_000000013 
+---potential parent: tank_000001384
+------checking: tank_000000013
+------relative cooccurence: 0.777777777777778
+------checking: tank_000001384
+------relative cooccurence: 0.666666666666667
+No parent found!
+
+####processing: tank_000000025 #####
+---hits: tank_000053324
+---potential parent: 
+No parent found!
+
+####processing: tank_000007440 #####
+---hits: tank_000091935
+---potential parent: 
+No parent found!
+
+####processing: tank_000033258 #####
+---hits: tank_000046123 
+---hits: tank_000056481 
+---hits: tank_000002085
+---potential parent: 
+No parent found!
+
+####processing: tank_000000328 #####
+---hits: tank_000000013 
+---hits: tank_000001384 
+---hits: tank_000002205 
+---hits: tank_000091872 
+---hits: tank_000038987 
+---hits: tank_000000078 
+---hits: tank_000003696 
+---hits: tank_000038112 
+---hits: tank_000000100
+---potential parent: tank_000000013 
+---potential parent: tank_000001384
+------checking: tank_000000013
+------relative cooccurence: 0.857142857142857
+------checking: tank_000001384
+------relative cooccurence: 0.857142857142857
+No parent found!
+
+####processing: tank_000033375 #####
+---hits: tank_000036970 
+---hits: tank_000042170
+---potential parent: 
+No parent found!
+
+####processing: tank_000032984 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000000029 #####
+---hits: tank_000016655 
+---hits: tank_000032140 
+---hits: tank_000019114 
+---hits: tank_000025915 
+---hits: tank_000000009 
+---hits: tank_000027673
+---potential parent: tank_000000009
+------checking: tank_000000009
+------relative cooccurence: 0.833333333333333
+No parent found!
+
+####processing: tank_000033356 #####
+---hits: tank_000037002 
+---hits: tank_000044340 
+---hits: tank_000063943 
+---hits: tank_000051981 
+---hits: tank_000049627
+---potential parent: 
+No parent found!
+
+####processing: tank_000020677 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000000008 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000000252 #####
+---hits: tank_000045014
+---potential parent: 
+No parent found!
+
+####processing: tank_000000018 #####
+---hits: tank_000033674 
+---hits: tank_000018178 
+---hits: tank_000001046 
+---hits: tank_000041543 
+---hits: tank_000000005 
+---hits: tank_000036643 
+---hits: tank_000070122 
+---hits: tank_000036268 
+---hits: tank_000033826 
+---hits: tank_000085106
+---potential parent: tank_000000005 
+---potential parent: tank_000033674
+------checking: tank_000000005
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 11.9040511727079 which is OK!
+SETTING tank_000000018 to be an ERROR of tank_000000005
+
+------checking: tank_000033674
+####processing: tank_000033289 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000036532 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000003628 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000000049 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000033439 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000000034 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000000084 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000033433 #####
+---hits: tank_000027790 
+---hits: tank_000062780 
+---hits: tank_000040660 
+---hits: tank_000033846 
+---hits: tank_000054037
+---potential parent: tank_000027790
+------checking: tank_000027790
+------relative cooccurence: 0.75
+No parent found!
+
+####processing: tank_000070122 #####
+---hits: tank_000000005 
+---hits: tank_000041543 
+---hits: tank_000001046 
+---hits: tank_000033826 
+---hits: tank_000036643 
+---hits: tank_000085106 
+---hits: tank_000018415 
+---hits: tank_000036268 
+---hits: tank_000071290 
+---hits: tank_000018178
+---potential parent: tank_000000005
+------checking: tank_000000005
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 1395.75 which is OK!
+SETTING tank_000070122 to be an ERROR of tank_000000005
+
+####processing: tank_000039891 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000000019 #####
+---hits: tank_000014578 
+---hits: tank_000000045 
+---hits: tank_000010874 
+---hits: tank_000011895
+---potential parent: tank_000000045 
+---potential parent: tank_000014578
+------checking: tank_000000045
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 2.24861878453039 which is OK!
+SETTING tank_000000019 to be an ERROR of tank_000000045
+
+------checking: tank_000014578
+####processing: tank_000000100 #####
+---hits: tank_000000013 
+---hits: tank_000000020 
+---hits: tank_000000328 
+---hits: tank_000002205
+---potential parent: tank_000000013 
+---potential parent: tank_000000020 
+---potential parent: tank_000000328
+------checking: tank_000000013
+------relative cooccurence: 0.666666666666667
+------checking: tank_000000020
+------relative cooccurence: 0.666666666666667
+------checking: tank_000000328
+------relative cooccurence: 0.666666666666667
+No parent found!
+
+####processing: tank_000033680 #####
+---hits: tank_000053170 
+---hits: tank_000002085 
+---hits: tank_000033873
+---potential parent: 
+No parent found!
+
+####processing: tank_000033270 #####
+---hits: tank_000000017 
+---hits: tank_000054130 
+---hits: tank_000003696
+---potential parent: tank_000000017
+------checking: tank_000000017
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 0.322834645669291
+No parent found!
+
+####processing: tank_000036489 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000039527 #####
+---hits: tank_000038606
+---potential parent: 
+No parent found!
+
+####processing: tank_000001046 #####
+---hits: tank_000000005 
+---hits: tank_000033674 
+---hits: tank_000036643 
+---hits: tank_000000018 
+---hits: tank_000041543 
+---hits: tank_000070122 
+---hits: tank_000036268 
+---hits: tank_000033826 
+---hits: tank_000085106 
+---hits: tank_000071290
+---potential parent: tank_000000005 
+---potential parent: tank_000033674 
+---potential parent: tank_000000018 
+---potential parent: tank_000070122
+------checking: tank_000000005
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 223 which is OK!
+SETTING tank_000001046 to be an ERROR of tank_000000005
+
+------checking: tank_000033674
+------checking: tank_000000018
+------checking: tank_000070122
+####processing: tank_000002821 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000050082 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000075923 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000014578 #####
+---hits: tank_000000019 
+---hits: tank_000000045 
+---hits: tank_000010874 
+---hits: tank_000011895 
+---hits: tank_000032140
+---potential parent: tank_000000045 
+---potential parent: tank_000000019
+------checking: tank_000000045
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 2035 which is OK!
+SETTING tank_000014578 to be an ERROR of tank_000000045
+
+------checking: tank_000000019
+####processing: tank_000002085 #####
+---hits: tank_000034359 
+---hits: tank_000046123 
+---hits: tank_000056481 
+---hits: tank_000033258 
+---hits: tank_000033873 
+---hits: tank_000017816 
+---hits: tank_000033680
+---potential parent: tank_000033258 
+---potential parent: tank_000033680 
+---potential parent: tank_000046123
+------checking: tank_000033258
+------relative cooccurence: 0
+------checking: tank_000033680
+------relative cooccurence: 0
+------checking: tank_000046123
+------relative cooccurence: 0
+No parent found!
+
+####processing: tank_000000095 #####
+---hits: tank_000000028 
+---hits: tank_000010478 
+---hits: tank_000019909 
+---hits: tank_000068873 
+---hits: tank_000001747 
+---hits: tank_000081127 
+---hits: tank_000015090 
+---hits: tank_000000006 
+---hits: tank_000000158 
+---hits: tank_000005093
+---potential parent: tank_000000028 
+---potential parent: tank_000000158 
+---potential parent: tank_000000006 
+---potential parent: tank_000001747 
+---potential parent: tank_000010478 
+---potential parent: tank_000068873 
+---potential parent: tank_000081127
+------checking: tank_000000028
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 0.00590318772136954
+------checking: tank_000000158
+------relative cooccurence: 0.5
+------checking: tank_000000006
+------relative cooccurence: 0.5
+------checking: tank_000001747
+------relative cooccurence: 0.5
+------checking: tank_000010478
+------relative cooccurence: 0.5
+------checking: tank_000068873
+------relative cooccurence: 0
+------checking: tank_000081127
+------relative cooccurence: 0
+No parent found!
+
+####processing: tank_000001747 #####
+---hits: tank_000015090 
+---hits: tank_000000028 
+---hits: tank_000000095 
+---hits: tank_000019909 
+---hits: tank_000068873 
+---hits: tank_000010478 
+---hits: tank_000000006 
+---hits: tank_000000158 
+---hits: tank_000005093 
+---hits: tank_000081127
+---potential parent: tank_000000028 
+---potential parent: tank_000000158 
+---potential parent: tank_000000006 
+---potential parent: tank_000000095 
+---potential parent: tank_000010478 
+---potential parent: tank_000068873 
+---potential parent: tank_000081127
+------checking: tank_000000028
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 0.00505050505050505
+------checking: tank_000000158
+------relative cooccurence: 0
+------checking: tank_000000006
+------relative cooccurence: 0.5
+------checking: tank_000000095
+------relative cooccurence: 0.5
+------checking: tank_000010478
+------relative cooccurence: 0
+------checking: tank_000068873
+------relative cooccurence: 0
+------checking: tank_000081127
+------relative cooccurence: 0
+No parent found!
+
+####processing: tank_000033961 #####
+---hits: tank_000034246
+---potential parent: 
+No parent found!
+
+####processing: tank_000046169 #####
+---hits: tank_000033873 
+---hits: tank_000046123 
+---hits: tank_000056481
+---potential parent: tank_000046123
+------checking: tank_000046123
+------relative cooccurence: 0
+No parent found!
+
+####processing: tank_000057670 #####
+---hits: tank_000036839
+---potential parent: 
+No parent found!
+
+####processing: tank_000037865 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000045800 #####
+---hits: tank_000079120
+---potential parent: 
+No parent found!
+
+####processing: tank_000053558 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000036970 #####
+---hits: tank_000042170 
+---hits: tank_000033375
+---potential parent: tank_000033375
+------checking: tank_000033375
+------relative cooccurence: 0
+No parent found!
+
+####processing: tank_000002205 #####
+---hits: tank_000001384 
+---hits: tank_000000020 
+---hits: tank_000000013 
+---hits: tank_000091872 
+---hits: tank_000038112 
+---hits: tank_000029145 
+---hits: tank_000038987 
+---hits: tank_000000328 
+---hits: tank_000000100
+---potential parent: tank_000000013 
+---potential parent: tank_000001384 
+---potential parent: tank_000000020 
+---potential parent: tank_000000328 
+---potential parent: tank_000000100
+------checking: tank_000000013
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 35.25 which is OK!
+SETTING tank_000002205 to be an ERROR of tank_000000013
+
+------checking: tank_000001384
+------checking: tank_000000020
+------checking: tank_000000328
+------checking: tank_000000100
+####processing: tank_000034782 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000001341 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000018178 #####
+---hits: tank_000041543 
+---hits: tank_000000018 
+---hits: tank_000000005 
+---hits: tank_000033674 
+---hits: tank_000070122 
+---hits: tank_000085106 
+---hits: tank_000001046 
+---hits: tank_000033826 
+---hits: tank_000036643 
+---hits: tank_000036268
+---potential parent: tank_000000005 
+---potential parent: tank_000033674 
+---potential parent: tank_000000018 
+---potential parent: tank_000070122 
+---potential parent: tank_000001046 
+---potential parent: tank_000033826 
+---potential parent: tank_000036268 
+---potential parent: tank_000036643 
+---potential parent: tank_000085106
+------checking: tank_000000005
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 4677.75 which is OK!
+SETTING tank_000018178 to be an ERROR of tank_000000005
+
+------checking: tank_000033674
+------checking: tank_000000018
+------checking: tank_000070122
+------checking: tank_000001046
+------checking: tank_000033826
+------checking: tank_000036268
+------checking: tank_000036643
+------checking: tank_000085106
+####processing: tank_000019236 #####
+---hits: tank_000013107 
+---hits: tank_000000035 
+---hits: tank_000006051 
+---hits: tank_000007732 
+---hits: tank_000013996 
+---hits: tank_000004195 
+---hits: tank_000009377
+---potential parent: tank_000000035 
+---potential parent: tank_000007732 
+---potential parent: tank_000009377 
+---potential parent: tank_000013107 
+---potential parent: tank_000013996
+------checking: tank_000000035
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 3537.5 which is OK!
+SETTING tank_000019236 to be an ERROR of tank_000000035
+
+------checking: tank_000007732
+------checking: tank_000009377
+------checking: tank_000013107
+------checking: tank_000013996
+####processing: tank_000019114 #####
+---hits: tank_000025915 
+---hits: tank_000016655 
+---hits: tank_000000009 
+---hits: tank_000000029 
+---hits: tank_000032140 
+---hits: tank_000027673 
+---hits: tank_000020892 
+---hits: tank_000010874
+---potential parent: tank_000000009 
+---potential parent: tank_000000029 
+---potential parent: tank_000016655
+------checking: tank_000000009
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 1016.33333333333 which is OK!
+SETTING tank_000019114 to be an ERROR of tank_000000009
+
+------checking: tank_000000029
+------checking: tank_000016655
+####processing: tank_000046123 #####
+---hits: tank_000056481 
+---hits: tank_000033258 
+---hits: tank_000002085 
+---hits: tank_000017816 
+---hits: tank_000034359 
+---hits: tank_000046169 
+---hits: tank_000053170 
+---hits: tank_000033873
+---potential parent: tank_000033258 
+---potential parent: tank_000002085 
+---potential parent: tank_000046169
+------checking: tank_000033258
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 1570 which is OK!
+SETTING tank_000046123 to be an ERROR of tank_000033258
+
+------checking: tank_000002085
+------checking: tank_000046169
+####processing: tank_000071153 #####
+---hits: tank_000000556 
+---hits: tank_000091470 
+---hits: tank_000045041 
+---hits: tank_000045788 
+---hits: tank_000069871 
+---hits: tank_000056242 
+---hits: tank_000067551 
+---hits: tank_000067901 
+---hits: tank_000035908 
+---hits: tank_000064576
+---potential parent: tank_000000556 
+---potential parent: tank_000045788 
+---potential parent: tank_000056242 
+---potential parent: tank_000064576 
+---potential parent: tank_000069871
+------checking: tank_000000556
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 34086.6666666667 which is OK!
+SETTING tank_000071153 to be an ERROR of tank_000000556
+
+------checking: tank_000045788
+------checking: tank_000056242
+------checking: tank_000064576
+------checking: tank_000069871
+####processing: tank_000016655 #####
+---hits: tank_000019114 
+---hits: tank_000000029 
+---hits: tank_000025915 
+---hits: tank_000032140 
+---hits: tank_000000009 
+---hits: tank_000027673 
+---hits: tank_000010874 
+---hits: tank_000020892
+---potential parent: tank_000000009 
+---potential parent: tank_000000029 
+---potential parent: tank_000019114
+------checking: tank_000000009
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 4275 which is OK!
+SETTING tank_000016655 to be an ERROR of tank_000000009
+
+------checking: tank_000000029
+------checking: tank_000019114
+####processing: tank_000021746 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000033826 #####
+---hits: tank_000000005 
+---hits: tank_000071290 
+---hits: tank_000036268 
+---hits: tank_000041543 
+---hits: tank_000070122 
+---hits: tank_000001046 
+---hits: tank_000036643 
+---hits: tank_000085106 
+---hits: tank_000088042 
+---hits: tank_000018178
+---potential parent: tank_000000005 
+---potential parent: tank_000070122 
+---potential parent: tank_000001046 
+---potential parent: tank_000018178 
+---potential parent: tank_000036268 
+---potential parent: tank_000036643 
+---potential parent: tank_000085106 
+---potential parent: tank_000088042
+------checking: tank_000000005
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 5583 which is OK!
+SETTING tank_000033826 to be an ERROR of tank_000000005
+
+------checking: tank_000070122
+------checking: tank_000001046
+------checking: tank_000018178
+------checking: tank_000036268
+------checking: tank_000036643
+------checking: tank_000085106
+------checking: tank_000088042
+####processing: tank_000054037 #####
+---hits: tank_000027790 
+---hits: tank_000033433 
+---hits: tank_000033846 
+---hits: tank_000062780 
+---hits: tank_000040660
+---potential parent: tank_000027790 
+---potential parent: tank_000033433 
+---potential parent: tank_000062780
+------checking: tank_000027790
+------relative cooccurence: 0.5
+------checking: tank_000033433
+------relative cooccurence: 0
+------checking: tank_000062780
+------relative cooccurence: 0
+No parent found!
+
+####processing: tank_000007732 #####
+---hits: tank_000000035 
+---hits: tank_000006051 
+---hits: tank_000013996 
+---hits: tank_000004195 
+---hits: tank_000019236 
+---hits: tank_000009377 
+---hits: tank_000013107
+---potential parent: tank_000000035 
+---potential parent: tank_000019236 
+---potential parent: tank_000009377 
+---potential parent: tank_000013107 
+---potential parent: tank_000013996
+------checking: tank_000000035
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 1188 which is OK!
+SETTING tank_000007732 to be an ERROR of tank_000000035
+
+------checking: tank_000019236
+------checking: tank_000009377
+------checking: tank_000013107
+------checking: tank_000013996
+####processing: tank_000009377 #####
+---hits: tank_000000035 
+---hits: tank_000006051 
+---hits: tank_000007732 
+---hits: tank_000013996 
+---hits: tank_000004195 
+---hits: tank_000019236 
+---hits: tank_000013107
+---potential parent: tank_000000035 
+---potential parent: tank_000019236 
+---potential parent: tank_000007732 
+---potential parent: tank_000013107 
+---potential parent: tank_000013996
+------checking: tank_000000035
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 9311 which is OK!
+SETTING tank_000009377 to be an ERROR of tank_000000035
+
+------checking: tank_000019236
+------checking: tank_000007732
+------checking: tank_000013107
+------checking: tank_000013996
+####processing: tank_000010478 #####
+---hits: tank_000000028 
+---hits: tank_000019909 
+---hits: tank_000068873 
+---hits: tank_000000095 
+---hits: tank_000081127 
+---hits: tank_000001747 
+---hits: tank_000015090
+---potential parent: tank_000000028 
+---potential parent: tank_000000095 
+---potential parent: tank_000001747 
+---potential parent: tank_000068873 
+---potential parent: tank_000081127
+------checking: tank_000000028
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 9966 which is OK!
+SETTING tank_000010478 to be an ERROR of tank_000000028
+
+------checking: tank_000000095
+------checking: tank_000001747
+------checking: tank_000068873
+------checking: tank_000081127
+####processing: tank_000013107 #####
+---hits: tank_000019236 
+---hits: tank_000000035 
+---hits: tank_000006051 
+---hits: tank_000007732 
+---hits: tank_000004195 
+---hits: tank_000013996 
+---hits: tank_000009377
+---potential parent: tank_000000035 
+---potential parent: tank_000019236 
+---potential parent: tank_000007732 
+---potential parent: tank_000009377 
+---potential parent: tank_000013996
+------checking: tank_000000035
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 9311 which is OK!
+SETTING tank_000013107 to be an ERROR of tank_000000035
+
+------checking: tank_000019236
+------checking: tank_000007732
+------checking: tank_000009377
+------checking: tank_000013996
+####processing: tank_000013996 #####
+---hits: tank_000000035 
+---hits: tank_000007732 
+---hits: tank_000004195 
+---hits: tank_000006051 
+---hits: tank_000009377 
+---hits: tank_000019236 
+---hits: tank_000013107
+---potential parent: tank_000000035 
+---potential parent: tank_000019236 
+---potential parent: tank_000007732 
+---potential parent: tank_000009377 
+---potential parent: tank_000013107
+------checking: tank_000000035
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 9311 which is OK!
+SETTING tank_000013996 to be an ERROR of tank_000000035
+
+------checking: tank_000019236
+------checking: tank_000007732
+------checking: tank_000009377
+------checking: tank_000013107
+####processing: tank_000018415 #####
+---hits: tank_000000005 
+---hits: tank_000070122 
+---hits: tank_000041543 
+---hits: tank_000001046 
+---hits: tank_000033826 
+---hits: tank_000036643 
+---hits: tank_000085106 
+---hits: tank_000036268 
+---hits: tank_000071290 
+---hits: tank_000018178
+---potential parent: tank_000000005 
+---potential parent: tank_000070122 
+---potential parent: tank_000001046 
+---potential parent: tank_000018178 
+---potential parent: tank_000033826 
+---potential parent: tank_000036268 
+---potential parent: tank_000036643 
+---potential parent: tank_000085106
+------checking: tank_000000005
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 1479 which is OK!
+SETTING tank_000018415 to be an ERROR of tank_000000005
+
+------checking: tank_000070122
+------checking: tank_000001046
+------checking: tank_000018178
+------checking: tank_000033826
+------checking: tank_000036268
+------checking: tank_000036643
+------checking: tank_000085106
+####processing: tank_000036268 #####
+---hits: tank_000000005 
+---hits: tank_000036643 
+---hits: tank_000033826 
+---hits: tank_000001046 
+---hits: tank_000041543 
+---hits: tank_000070122 
+---hits: tank_000085106 
+---hits: tank_000071290 
+---hits: tank_000088042 
+---hits: tank_000033674
+---potential parent: tank_000000005 
+---potential parent: tank_000033674 
+---potential parent: tank_000070122 
+---potential parent: tank_000001046 
+---potential parent: tank_000033826 
+---potential parent: tank_000036643 
+---potential parent: tank_000085106 
+---potential parent: tank_000088042
+------checking: tank_000000005
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 5023 which is OK!
+SETTING tank_000036268 to be an ERROR of tank_000000005
+
+------checking: tank_000033674
+------checking: tank_000070122
+------checking: tank_000001046
+------checking: tank_000033826
+------checking: tank_000036643
+------checking: tank_000085106
+------checking: tank_000088042
+####processing: tank_000036643 #####
+---hits: tank_000000005 
+---hits: tank_000001046 
+---hits: tank_000036268 
+---hits: tank_000041543 
+---hits: tank_000070122 
+---hits: tank_000033826 
+---hits: tank_000085106 
+---hits: tank_000071290 
+---hits: tank_000033674 
+---hits: tank_000018178
+---potential parent: tank_000000005 
+---potential parent: tank_000033674 
+---potential parent: tank_000070122 
+---potential parent: tank_000001046 
+---potential parent: tank_000018178 
+---potential parent: tank_000033826 
+---potential parent: tank_000036268 
+---potential parent: tank_000085106
+------checking: tank_000000005
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 4427 which is OK!
+SETTING tank_000036643 to be an ERROR of tank_000000005
+
+------checking: tank_000033674
+------checking: tank_000070122
+------checking: tank_000001046
+------checking: tank_000018178
+------checking: tank_000033826
+------checking: tank_000036268
+------checking: tank_000085106
+####processing: tank_000040730 #####
+---hits: tank_000064576 
+---hits: tank_000000556 
+---hits: tank_000045788 
+---hits: tank_000069871 
+---hits: tank_000091470 
+---hits: tank_000045041 
+---hits: tank_000035908 
+---hits: tank_000056242 
+---hits: tank_000071153 
+---hits: tank_000087482
+---potential parent: tank_000000556 
+---potential parent: tank_000071153 
+---potential parent: tank_000045788 
+---potential parent: tank_000056242 
+---potential parent: tank_000064576 
+---potential parent: tank_000069871
+------checking: tank_000000556
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 88779 which is OK!
+SETTING tank_000040730 to be an ERROR of tank_000000556
+
+------checking: tank_000071153
+------checking: tank_000045788
+------checking: tank_000056242
+------checking: tank_000064576
+------checking: tank_000069871
+####processing: tank_000043426 #####
+---hits: tank_000006238 
+---hits: tank_000060724 
+---hits: tank_000007238
+---potential parent: tank_000006238 
+---potential parent: tank_000007238 
+---potential parent: tank_000060724
+------checking: tank_000006238
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 1400 which is OK!
+SETTING tank_000043426 to be an ERROR of tank_000006238
+
+------checking: tank_000007238
+------checking: tank_000060724
+####processing: tank_000045788 #####
+---hits: tank_000000556 
+---hits: tank_000035908 
+---hits: tank_000071153 
+---hits: tank_000091470 
+---hits: tank_000045041 
+---hits: tank_000069871 
+---hits: tank_000056242 
+---hits: tank_000067551 
+---hits: tank_000064576 
+---hits: tank_000070022
+---potential parent: tank_000000556 
+---potential parent: tank_000071153 
+---potential parent: tank_000056242 
+---potential parent: tank_000064576 
+---potential parent: tank_000069871
+------checking: tank_000000556
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 88779 which is OK!
+SETTING tank_000045788 to be an ERROR of tank_000000556
+
+------checking: tank_000071153
+------checking: tank_000056242
+------checking: tank_000064576
+------checking: tank_000069871
+####processing: tank_000056242 #####
+---hits: tank_000000556 
+---hits: tank_000087482 
+---hits: tank_000045041 
+---hits: tank_000070022 
+---hits: tank_000091470 
+---hits: tank_000035908 
+---hits: tank_000071153 
+---hits: tank_000045788 
+---hits: tank_000069871 
+---hits: tank_000067551
+---potential parent: tank_000000556 
+---potential parent: tank_000071153 
+---potential parent: tank_000045788 
+---potential parent: tank_000069871
+------checking: tank_000000556
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 88779 which is OK!
+SETTING tank_000056242 to be an ERROR of tank_000000556
+
+------checking: tank_000071153
+------checking: tank_000045788
+------checking: tank_000069871
+####processing: tank_000060724 #####
+---hits: tank_000006238 
+---hits: tank_000043426 
+---hits: tank_000007238
+---potential parent: tank_000006238 
+---potential parent: tank_000007238 
+---potential parent: tank_000043426
+------checking: tank_000006238
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 2546 which is OK!
+SETTING tank_000060724 to be an ERROR of tank_000006238
+
+------checking: tank_000007238
+------checking: tank_000043426
+####processing: tank_000062780 #####
+---hits: tank_000027790 
+---hits: tank_000040660 
+---hits: tank_000033433 
+---hits: tank_000033846 
+---hits: tank_000054037
+---potential parent: tank_000027790 
+---potential parent: tank_000033433 
+---potential parent: tank_000054037
+------checking: tank_000027790
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 446 which is OK!
+SETTING tank_000062780 to be an ERROR of tank_000027790
+
+------checking: tank_000033433
+------checking: tank_000054037
+####processing: tank_000064576 #####
+---hits: tank_000000556 
+---hits: tank_000069871 
+---hits: tank_000091470 
+---hits: tank_000071153 
+---hits: tank_000045041 
+---hits: tank_000045788 
+---hits: tank_000040730 
+---hits: tank_000056242 
+---hits: tank_000067551 
+---hits: tank_000035908
+---potential parent: tank_000000556 
+---potential parent: tank_000071153 
+---potential parent: tank_000040730 
+---potential parent: tank_000045788 
+---potential parent: tank_000056242 
+---potential parent: tank_000069871
+------checking: tank_000000556
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 88779 which is OK!
+SETTING tank_000064576 to be an ERROR of tank_000000556
+
+------checking: tank_000071153
+------checking: tank_000040730
+------checking: tank_000045788
+------checking: tank_000056242
+------checking: tank_000069871
+####processing: tank_000068873 #####
+---hits: tank_000000028 
+---hits: tank_000019909 
+---hits: tank_000010478 
+---hits: tank_000081127 
+---hits: tank_000000095 
+---hits: tank_000001747 
+---hits: tank_000015090
+---potential parent: tank_000000028 
+---potential parent: tank_000000095 
+---potential parent: tank_000001747 
+---potential parent: tank_000010478 
+---potential parent: tank_000081127
+------checking: tank_000000028
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 2175 which is OK!
+SETTING tank_000068873 to be an ERROR of tank_000000028
+
+------checking: tank_000000095
+------checking: tank_000001747
+------checking: tank_000010478
+------checking: tank_000081127
+####processing: tank_000069871 #####
+---hits: tank_000000556 
+---hits: tank_000091470 
+---hits: tank_000064576 
+---hits: tank_000071153 
+---hits: tank_000045041 
+---hits: tank_000045788 
+---hits: tank_000056242 
+---hits: tank_000067551 
+---hits: tank_000035908 
+---hits: tank_000070022
+---potential parent: tank_000000556 
+---potential parent: tank_000071153 
+---potential parent: tank_000045788 
+---potential parent: tank_000056242 
+---potential parent: tank_000064576
+------checking: tank_000000556
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 88779 which is OK!
+SETTING tank_000069871 to be an ERROR of tank_000000556
+
+------checking: tank_000071153
+------checking: tank_000045788
+------checking: tank_000056242
+------checking: tank_000064576
+####processing: tank_000081127 #####
+---hits: tank_000068873 
+---hits: tank_000000028 
+---hits: tank_000019909 
+---hits: tank_000000095 
+---hits: tank_000010478 
+---hits: tank_000001747
+---potential parent: tank_000000028 
+---potential parent: tank_000000095 
+---potential parent: tank_000001747 
+---potential parent: tank_000010478 
+---potential parent: tank_000068873
+------checking: tank_000000028
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 711 which is OK!
+SETTING tank_000081127 to be an ERROR of tank_000000028
+
+------checking: tank_000000095
+------checking: tank_000001747
+------checking: tank_000010478
+------checking: tank_000068873
+####processing: tank_000085106 #####
+---hits: tank_000000005 
+---hits: tank_000041543 
+---hits: tank_000070122 
+---hits: tank_000001046 
+---hits: tank_000033826 
+---hits: tank_000036643 
+---hits: tank_000036268 
+---hits: tank_000071290 
+---hits: tank_000088042 
+---hits: tank_000018178
+---potential parent: tank_000000005 
+---potential parent: tank_000070122 
+---potential parent: tank_000001046 
+---potential parent: tank_000018178 
+---potential parent: tank_000033826 
+---potential parent: tank_000036268 
+---potential parent: tank_000036643 
+---potential parent: tank_000088042
+------checking: tank_000000005
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 992 which is OK!
+SETTING tank_000085106 to be an ERROR of tank_000000005
+
+------checking: tank_000070122
+------checking: tank_000001046
+------checking: tank_000018178
+------checking: tank_000033826
+------checking: tank_000036268
+------checking: tank_000036643
+------checking: tank_000088042
+####processing: tank_000088042 #####
+---hits: tank_000000005 
+---hits: tank_000085106 
+---hits: tank_000033826 
+---hits: tank_000001046 
+---hits: tank_000036268 
+---hits: tank_000036643 
+---hits: tank_000041543 
+---hits: tank_000071290 
+---hits: tank_000070122 
+---hits: tank_000033674
+---potential parent: tank_000000005 
+---potential parent: tank_000033674 
+---potential parent: tank_000070122 
+---potential parent: tank_000001046 
+---potential parent: tank_000033826 
+---potential parent: tank_000036268 
+---potential parent: tank_000036643 
+---potential parent: tank_000085106
+------checking: tank_000000005
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 2306 which is OK!
+SETTING tank_000088042 to be an ERROR of tank_000000005
+
+------checking: tank_000033674
+------checking: tank_000070122
+------checking: tank_000001046
+------checking: tank_000033826
+------checking: tank_000036268
+------checking: tank_000036643
+------checking: tank_000085106
+####processing: tank_000000078 #####
+---hits: tank_000003696 
+---hits: tank_000000328 
+---hits: tank_000000006
+---potential parent: tank_000000006 
+---potential parent: tank_000000328 
+---potential parent: tank_000003696
+------checking: tank_000000006
+------relative cooccurence: 0
+------checking: tank_000000328
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 0.543110394842869
+------checking: tank_000003696
+------relative cooccurence: 0
+No parent found!
+
+####processing: tank_000033726 #####
+---hits: tank_000037898
+---potential parent: tank_000037898
+------checking: tank_000037898
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 0.0928
+No parent found!
+
+####processing: tank_000033873 #####
+---hits: tank_000002085 
+---hits: tank_000046169 
+---hits: tank_000046123 
+---hits: tank_000056481 
+---hits: tank_000033680
+---potential parent: tank_000033680 
+---potential parent: tank_000002085 
+---potential parent: tank_000046169 
+---potential parent: tank_000046123 
+---potential parent: tank_000056481
+------checking: tank_000033680
+------relative cooccurence: 0
+------checking: tank_000002085
+------relative cooccurence: 0
+------checking: tank_000046169
+------relative cooccurence: 0
+------checking: tank_000046123
+------relative cooccurence: 0
+------checking: tank_000056481
+------relative cooccurence: 0
+No parent found!
+
+####processing: tank_000000014 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000000242 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000001330 #####
+---hits: tank_000000009 
+---hits: tank_000032140 
+---hits: tank_000025915 
+---hits: tank_000027673
+---potential parent: tank_000000009 
+---potential parent: tank_000025915 
+---potential parent: tank_000027673 
+---potential parent: tank_000032140
+------checking: tank_000000009
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 9.7724358974359 which is OK!
+SETTING tank_000001330 to be an ERROR of tank_000000009
+
+------checking: tank_000025915
+------checking: tank_000027673
+------checking: tank_000032140
+####processing: tank_000000064 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000033429 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000000701 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000033846 #####
+---hits: tank_000027790 
+---hits: tank_000033433 
+---hits: tank_000062780 
+---hits: tank_000040660 
+---hits: tank_000054037
+---potential parent: tank_000027790 
+---potential parent: tank_000033433 
+---potential parent: tank_000054037 
+---potential parent: tank_000062780 
+---potential parent: tank_000040660
+------checking: tank_000027790
+------relative cooccurence: 0
+------checking: tank_000033433
+------relative cooccurence: 0
+------checking: tank_000054037
+------relative cooccurence: 0
+------checking: tank_000062780
+------relative cooccurence: 0
+------checking: tank_000040660
+------relative cooccurence: 0
+No parent found!
+
+####processing: tank_000002905 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000034246 #####
+---hits: tank_000033961
+---potential parent: tank_000033961
+------checking: tank_000033961
+------relative cooccurence: 0
+No parent found!
+
+####processing: tank_000003696 #####
+---hits: tank_000000078 
+---hits: tank_000000328 
+---hits: tank_000033270 
+---hits: tank_000000017
+---potential parent: tank_000000017 
+---potential parent: tank_000000328 
+---potential parent: tank_000033270 
+---potential parent: tank_000000078
+------checking: tank_000000017
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 3.48979591836735 which is OK!
+SETTING tank_000003696 to be an ERROR of tank_000000017
+
+------checking: tank_000000328
+------checking: tank_000033270
+------checking: tank_000000078
+####processing: tank_000002653 #####
+---hits: tank_000000006 
+---hits: tank_000000158 
+---hits: tank_000005093
+---potential parent: tank_000000158 
+---potential parent: tank_000000006 
+---potential parent: tank_000005093
+------checking: tank_000000158
+------relative cooccurence: 0
+------checking: tank_000000006
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 0.0125
+------checking: tank_000005093
+------relative cooccurence: 0
+No parent found!
+
+####processing: tank_000034138 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000037898 #####
+---hits: tank_000033726
+---potential parent: tank_000033726
+------checking: tank_000033726
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 10.7758620689655 which is OK!
+SETTING tank_000037898 to be an ERROR of tank_000033726
+
+####processing: tank_000036839 #####
+---hits: tank_000057670
+---potential parent: tank_000057670
+------checking: tank_000057670
+------relative cooccurence: 0
+No parent found!
+
+####processing: tank_000037848 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000007898 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000034039 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000041543 #####
+---hits: tank_000000005 
+---hits: tank_000033674 
+---hits: tank_000018178 
+---hits: tank_000070122 
+---hits: tank_000001046 
+---hits: tank_000033826 
+---hits: tank_000036643 
+---hits: tank_000085106 
+---hits: tank_000036268 
+---hits: tank_000071290
+---potential parent: tank_000000005 
+---potential parent: tank_000033674 
+---potential parent: tank_000070122 
+---potential parent: tank_000001046 
+---potential parent: tank_000018178 
+---potential parent: tank_000033826 
+---potential parent: tank_000036268 
+---potential parent: tank_000036643 
+---potential parent: tank_000085106 
+---potential parent: tank_000071290
+------checking: tank_000000005
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 182.974358974359 which is OK!
+SETTING tank_000041543 to be an ERROR of tank_000000005
+
+------checking: tank_000033674
+------checking: tank_000070122
+------checking: tank_000001046
+------checking: tank_000018178
+------checking: tank_000033826
+------checking: tank_000036268
+------checking: tank_000036643
+------checking: tank_000085106
+------checking: tank_000071290
+####processing: tank_000037351 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000002022 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000003606 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000005093 #####
+---hits: tank_000000006 
+---hits: tank_000000158 
+---hits: tank_000063401 
+---hits: tank_000000095 
+---hits: tank_000002653 
+---hits: tank_000000028 
+---hits: tank_000001747
+---potential parent: tank_000000028 
+---potential parent: tank_000000158 
+---potential parent: tank_000000006 
+---potential parent: tank_000000095 
+---potential parent: tank_000001747 
+---potential parent: tank_000002653 
+---potential parent: tank_000063401
+------checking: tank_000000028
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 0.185185185185185
+------checking: tank_000000158
+------relative cooccurence: 0
+------checking: tank_000000006
+------relative cooccurence: 0
+------checking: tank_000000095
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 31.3703703703704 which is OK!
+SETTING tank_000005093 to be an ERROR of tank_000000095
+
+------checking: tank_000001747
+------checking: tank_000002653
+------checking: tank_000063401
+####processing: tank_000038449 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000000528 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000005517 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000001517 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000038606 #####
+---hits: tank_000039527
+---potential parent: tank_000039527
+------checking: tank_000039527
+------relative cooccurence: 0
+No parent found!
+
+####processing: tank_000048874 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000007258 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000050000 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000002756 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000017816 #####
+---hits: tank_000046123 
+---hits: tank_000056481 
+---hits: tank_000002085
+---potential parent: tank_000002085 
+---potential parent: tank_000046123 
+---potential parent: tank_000056481
+------checking: tank_000002085
+------relative cooccurence: 0
+------checking: tank_000046123
+------relative cooccurence: 0
+------checking: tank_000056481
+------relative cooccurence: 0
+No parent found!
+
+####processing: tank_000057979 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000006148 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000040225 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000039093 #####
+---hits: tank_000007946
+---potential parent: tank_000007946
+------checking: tank_000007946
+------relative cooccurence: 0
+No parent found!
+
+####processing: tank_000016492 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000045202 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000047201 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000045014 #####
+---hits: tank_000000252
+---potential parent: tank_000000252
+------checking: tank_000000252
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 241 which is OK!
+SETTING tank_000045014 to be an ERROR of tank_000000252
+
+####processing: tank_000043743 #####
+---hits: tank_000081575 
+---hits: tank_000046318
+---potential parent: tank_000046318 
+---potential parent: tank_000081575
+------checking: tank_000046318
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 0.5
+------checking: tank_000081575
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 0.5
+No parent found!
+
+####processing: tank_000051029 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000042967 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000044935 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000084826 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000007946 #####
+---hits: tank_000039093
+---potential parent: tank_000039093
+------checking: tank_000039093
+------relative cooccurence: 0
+No parent found!
+
+####processing: tank_000026060 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000058117 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000085369 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000009079 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000020892 #####
+---hits: tank_000000009 
+---hits: tank_000027673 
+---hits: tank_000025915 
+---hits: tank_000019114 
+---hits: tank_000016655 
+---hits: tank_000032140
+---potential parent: tank_000000009 
+---potential parent: tank_000019114 
+---potential parent: tank_000016655 
+---potential parent: tank_000025915 
+---potential parent: tank_000027673 
+---potential parent: tank_000032140
+------checking: tank_000000009
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 3294.33333333333 which is OK!
+SETTING tank_000020892 to be an ERROR of tank_000000009
+
+------checking: tank_000019114
+------checking: tank_000016655
+------checking: tank_000025915
+------checking: tank_000027673
+------checking: tank_000032140
+####processing: tank_000029145 #####
+---hits: tank_000000020 
+---hits: tank_000002205 
+---hits: tank_000000013 
+---hits: tank_000001384 
+---hits: tank_000091872 
+---hits: tank_000038112 
+---hits: tank_000038987
+---potential parent: tank_000000013 
+---potential parent: tank_000001384 
+---potential parent: tank_000000020 
+---potential parent: tank_000002205 
+---potential parent: tank_000038112 
+---potential parent: tank_000038987 
+---potential parent: tank_000091872
+------checking: tank_000000013
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 348 which is OK!
+SETTING tank_000029145 to be an ERROR of tank_000000013
+
+------checking: tank_000001384
+------checking: tank_000000020
+------checking: tank_000002205
+------checking: tank_000038112
+------checking: tank_000038987
+------checking: tank_000091872
+####processing: tank_000044116 #####
+---hits: tank_000046318 
+---hits: tank_000081575
+---potential parent: tank_000046318 
+---potential parent: tank_000081575
+------checking: tank_000046318
+------relative cooccurence: 0
+------checking: tank_000081575
+------relative cooccurence: 0
+No parent found!
+
+####processing: tank_000044998 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000046318 #####
+---hits: tank_000044116 
+---hits: tank_000081575 
+---hits: tank_000043743
+---potential parent: tank_000043743 
+---potential parent: tank_000044116 
+---potential parent: tank_000081575
+------checking: tank_000043743
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 2 which is OK!
+SETTING tank_000046318 to be an ERROR of tank_000043743
+
+------checking: tank_000044116
+------checking: tank_000081575
+####processing: tank_000049627 #####
+---hits: tank_000063943 
+---hits: tank_000044340 
+---hits: tank_000033356 
+---hits: tank_000037002 
+---hits: tank_000051981
+---potential parent: tank_000033356 
+---potential parent: tank_000051981 
+---potential parent: tank_000037002 
+---potential parent: tank_000044340 
+---potential parent: tank_000063943
+------checking: tank_000033356
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 2398 which is OK!
+SETTING tank_000049627 to be an ERROR of tank_000033356
+
+------checking: tank_000051981
+------checking: tank_000037002
+------checking: tank_000044340
+------checking: tank_000063943
+####processing: tank_000051981 #####
+---hits: tank_000033356 
+---hits: tank_000037002 
+---hits: tank_000044340 
+---hits: tank_000063943 
+---hits: tank_000049627
+---potential parent: tank_000033356 
+---potential parent: tank_000049627 
+---potential parent: tank_000037002 
+---potential parent: tank_000044340 
+---potential parent: tank_000063943
+------checking: tank_000033356
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 2398 which is OK!
+SETTING tank_000051981 to be an ERROR of tank_000033356
+
+------checking: tank_000049627
+------checking: tank_000037002
+------checking: tank_000044340
+------checking: tank_000063943
+####processing: tank_000053835 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000056481 #####
+---hits: tank_000046123 
+---hits: tank_000033258 
+---hits: tank_000002085 
+---hits: tank_000017816 
+---hits: tank_000046169 
+---hits: tank_000034359 
+---hits: tank_000033873
+---potential parent: tank_000033258 
+---potential parent: tank_000002085 
+---potential parent: tank_000046169 
+---potential parent: tank_000046123 
+---potential parent: tank_000033873 
+---potential parent: tank_000017816 
+---potential parent: tank_000034359
+------checking: tank_000033258
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 1601.33333333333 which is OK!
+SETTING tank_000056481 to be an ERROR of tank_000033258
+
+------checking: tank_000002085
+------checking: tank_000046169
+------checking: tank_000046123
+------checking: tank_000033873
+------checking: tank_000017816
+------checking: tank_000034359
+####processing: tank_000058553 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000061825 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000071851 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000077960 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000081575 #####
+---hits: tank_000043743 
+---hits: tank_000046318 
+---hits: tank_000044116
+---potential parent: tank_000043743 
+---potential parent: tank_000044116 
+---potential parent: tank_000046318
+------checking: tank_000043743
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 2 which is OK!
+SETTING tank_000081575 to be an ERROR of tank_000043743
+
+------checking: tank_000044116
+------checking: tank_000046318
+####processing: tank_000087337 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000091470 #####
+---hits: tank_000000556 
+---hits: tank_000045041 
+---hits: tank_000056242 
+---hits: tank_000069871 
+---hits: tank_000071153 
+---hits: tank_000045788 
+---hits: tank_000070022 
+---hits: tank_000064576 
+---hits: tank_000067551 
+---hits: tank_000035908
+---potential parent: tank_000000556 
+---potential parent: tank_000071153 
+---potential parent: tank_000045788 
+---potential parent: tank_000056242 
+---potential parent: tank_000064576 
+---potential parent: tank_000069871 
+---potential parent: tank_000035908 
+---potential parent: tank_000045041 
+---potential parent: tank_000067551 
+---potential parent: tank_000070022
+------checking: tank_000000556
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 34086.6666666667 which is OK!
+SETTING tank_000091470 to be an ERROR of tank_000000556
+
+------checking: tank_000071153
+------checking: tank_000045788
+------checking: tank_000056242
+------checking: tank_000064576
+------checking: tank_000069871
+------checking: tank_000035908
+------checking: tank_000045041
+------checking: tank_000067551
+------checking: tank_000070022
+####processing: tank_000004195 #####
+---hits: tank_000000035 
+---hits: tank_000007732 
+---hits: tank_000013996 
+---hits: tank_000006051 
+---hits: tank_000009377 
+---hits: tank_000019236 
+---hits: tank_000013107
+---potential parent: tank_000000035 
+---potential parent: tank_000019236 
+---potential parent: tank_000007732 
+---potential parent: tank_000009377 
+---potential parent: tank_000013107 
+---potential parent: tank_000013996 
+---potential parent: tank_000006051
+------checking: tank_000000035
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 7075 which is OK!
+SETTING tank_000004195 to be an ERROR of tank_000000035
+
+------checking: tank_000019236
+------checking: tank_000007732
+------checking: tank_000009377
+------checking: tank_000013107
+------checking: tank_000013996
+------checking: tank_000006051
+####processing: tank_000006051 #####
+---hits: tank_000000035 
+---hits: tank_000019236 
+---hits: tank_000007732 
+---hits: tank_000009377 
+---hits: tank_000013996 
+---hits: tank_000004195 
+---hits: tank_000013107
+---potential parent: tank_000000035 
+---potential parent: tank_000019236 
+---potential parent: tank_000007732 
+---potential parent: tank_000009377 
+---potential parent: tank_000013107 
+---potential parent: tank_000013996 
+---potential parent: tank_000004195
+------checking: tank_000000035
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 4655.5 which is OK!
+SETTING tank_000006051 to be an ERROR of tank_000000035
+
+------checking: tank_000019236
+------checking: tank_000007732
+------checking: tank_000009377
+------checking: tank_000013107
+------checking: tank_000013996
+------checking: tank_000004195
+####processing: tank_000006654 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000010874 #####
+---hits: tank_000000019 
+---hits: tank_000014578 
+---hits: tank_000000045 
+---hits: tank_000016655 
+---hits: tank_000019114 
+---hits: tank_000000009 
+---hits: tank_000011895 
+---hits: tank_000025915
+---potential parent: tank_000000009 
+---potential parent: tank_000000045 
+---potential parent: tank_000000019 
+---potential parent: tank_000014578 
+---potential parent: tank_000019114 
+---potential parent: tank_000016655 
+---potential parent: tank_000011895 
+---potential parent: tank_000025915
+------checking: tank_000000009
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 4941.5 which is OK!
+SETTING tank_000010874 to be an ERROR of tank_000000009
+
+------checking: tank_000000045
+------checking: tank_000000019
+------checking: tank_000014578
+------checking: tank_000019114
+------checking: tank_000016655
+------checking: tank_000011895
+------checking: tank_000025915
+####processing: tank_000011895 #####
+---hits: tank_000000045 
+---hits: tank_000000019 
+---hits: tank_000014578 
+---hits: tank_000010874
+---potential parent: tank_000000045 
+---potential parent: tank_000000019 
+---potential parent: tank_000014578 
+---potential parent: tank_000010874
+------checking: tank_000000045
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 2795 which is OK!
+SETTING tank_000011895 to be an ERROR of tank_000000045
+
+------checking: tank_000000019
+------checking: tank_000014578
+------checking: tank_000010874
+####processing: tank_000015090 #####
+---hits: tank_000001747 
+---hits: tank_000000028 
+---hits: tank_000000095 
+---hits: tank_000019909 
+---hits: tank_000010478 
+---hits: tank_000068873
+---potential parent: tank_000000028 
+---potential parent: tank_000000095 
+---potential parent: tank_000001747 
+---potential parent: tank_000010478 
+---potential parent: tank_000068873 
+---potential parent: tank_000019909
+------checking: tank_000000028
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 0.5
+------checking: tank_000000095
+------relative cooccurence: 0
+------checking: tank_000001747
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 99 which is OK!
+SETTING tank_000015090 to be an ERROR of tank_000001747
+
+------checking: tank_000010478
+------checking: tank_000068873
+------checking: tank_000019909
+####processing: tank_000019909 #####
+---hits: tank_000000028 
+---hits: tank_000068873 
+---hits: tank_000010478 
+---hits: tank_000000095 
+---hits: tank_000081127 
+---hits: tank_000001747 
+---hits: tank_000015090
+---potential parent: tank_000000028 
+---potential parent: tank_000000095 
+---potential parent: tank_000001747 
+---potential parent: tank_000010478 
+---potential parent: tank_000068873 
+---potential parent: tank_000081127 
+---potential parent: tank_000015090
+------checking: tank_000000028
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 5010 which is OK!
+SETTING tank_000019909 to be an ERROR of tank_000000028
+
+------checking: tank_000000095
+------checking: tank_000001747
+------checking: tank_000010478
+------checking: tank_000068873
+------checking: tank_000081127
+------checking: tank_000015090
+####processing: tank_000025915 #####
+---hits: tank_000019114 
+---hits: tank_000000009 
+---hits: tank_000016655 
+---hits: tank_000032140 
+---hits: tank_000027673 
+---hits: tank_000000029 
+---hits: tank_000020892 
+---hits: tank_000001330 
+---hits: tank_000010874
+---potential parent: tank_000000009 
+---potential parent: tank_000000029 
+---potential parent: tank_000019114 
+---potential parent: tank_000016655 
+---potential parent: tank_000001330 
+---potential parent: tank_000020892 
+---potential parent: tank_000010874 
+---potential parent: tank_000027673 
+---potential parent: tank_000032140
+------checking: tank_000000009
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 4941.5 which is OK!
+SETTING tank_000025915 to be an ERROR of tank_000000009
+
+------checking: tank_000000029
+------checking: tank_000019114
+------checking: tank_000016655
+------checking: tank_000001330
+------checking: tank_000020892
+------checking: tank_000010874
+------checking: tank_000027673
+------checking: tank_000032140
+####processing: tank_000027673 #####
+---hits: tank_000000009 
+---hits: tank_000025915 
+---hits: tank_000019114 
+---hits: tank_000020892 
+---hits: tank_000016655 
+---hits: tank_000032140 
+---hits: tank_000000029 
+---hits: tank_000001330
+---potential parent: tank_000000009 
+---potential parent: tank_000000029 
+---potential parent: tank_000019114 
+---potential parent: tank_000016655 
+---potential parent: tank_000001330 
+---potential parent: tank_000020892 
+---potential parent: tank_000025915 
+---potential parent: tank_000032140
+------checking: tank_000000009
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 1524.5 which is OK!
+SETTING tank_000027673 to be an ERROR of tank_000000009
+
+------checking: tank_000000029
+------checking: tank_000019114
+------checking: tank_000016655
+------checking: tank_000001330
+------checking: tank_000020892
+------checking: tank_000025915
+------checking: tank_000032140
+####processing: tank_000032140 #####
+---hits: tank_000000029 
+---hits: tank_000025915 
+---hits: tank_000019114 
+---hits: tank_000016655 
+---hits: tank_000000009 
+---hits: tank_000027673 
+---hits: tank_000001330 
+---hits: tank_000020892 
+---hits: tank_000014578
+---potential parent: tank_000000009 
+---potential parent: tank_000000029 
+---potential parent: tank_000014578 
+---potential parent: tank_000019114 
+---potential parent: tank_000016655 
+---potential parent: tank_000001330 
+---potential parent: tank_000020892 
+---potential parent: tank_000025915 
+---potential parent: tank_000027673
+------checking: tank_000000009
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 4941.5 which is OK!
+SETTING tank_000032140 to be an ERROR of tank_000000009
+
+------checking: tank_000000029
+------checking: tank_000014578
+------checking: tank_000019114
+------checking: tank_000016655
+------checking: tank_000001330
+------checking: tank_000020892
+------checking: tank_000025915
+------checking: tank_000027673
+####processing: tank_000034359 #####
+---hits: tank_000002085 
+---hits: tank_000046123 
+---hits: tank_000056481
+---potential parent: tank_000002085 
+---potential parent: tank_000046123 
+---potential parent: tank_000056481
+------checking: tank_000002085
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 993 which is OK!
+SETTING tank_000034359 to be an ERROR of tank_000002085
+
+------checking: tank_000046123
+------checking: tank_000056481
+####processing: tank_000035908 #####
+---hits: tank_000000556 
+---hits: tank_000045788 
+---hits: tank_000070022 
+---hits: tank_000045041 
+---hits: tank_000056242 
+---hits: tank_000071153 
+---hits: tank_000091470 
+---hits: tank_000067551 
+---hits: tank_000069871 
+---hits: tank_000087482
+---potential parent: tank_000000556 
+---potential parent: tank_000071153 
+---potential parent: tank_000045788 
+---potential parent: tank_000056242 
+---potential parent: tank_000069871 
+---potential parent: tank_000091470 
+---potential parent: tank_000045041 
+---potential parent: tank_000067551 
+---potential parent: tank_000070022 
+---potential parent: tank_000087482
+------checking: tank_000000556
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 44389.5 which is OK!
+SETTING tank_000035908 to be an ERROR of tank_000000556
+
+------checking: tank_000071153
+------checking: tank_000045788
+------checking: tank_000056242
+------checking: tank_000069871
+------checking: tank_000091470
+------checking: tank_000045041
+------checking: tank_000067551
+------checking: tank_000070022
+------checking: tank_000087482
+####processing: tank_000037002 #####
+---hits: tank_000033356 
+---hits: tank_000044340 
+---hits: tank_000063943 
+---hits: tank_000051981 
+---hits: tank_000049627
+---potential parent: tank_000033356 
+---potential parent: tank_000049627 
+---potential parent: tank_000051981 
+---potential parent: tank_000044340 
+---potential parent: tank_000063943
+------checking: tank_000033356
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 3597 which is OK!
+SETTING tank_000037002 to be an ERROR of tank_000033356
+
+------checking: tank_000049627
+------checking: tank_000051981
+------checking: tank_000044340
+------checking: tank_000063943
+####processing: tank_000038112 #####
+---hits: tank_000000013 
+---hits: tank_000091872 
+---hits: tank_000038987 
+---hits: tank_000000020 
+---hits: tank_000002205 
+---hits: tank_000001384 
+---hits: tank_000029145 
+---hits: tank_000000328
+---potential parent: tank_000000013 
+---potential parent: tank_000001384 
+---potential parent: tank_000000020 
+---potential parent: tank_000000328 
+---potential parent: tank_000002205 
+---potential parent: tank_000029145 
+---potential parent: tank_000038987 
+---potential parent: tank_000091872
+------checking: tank_000000013
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 2082.5 which is OK!
+SETTING tank_000038112 to be an ERROR of tank_000000013
+
+------checking: tank_000001384
+------checking: tank_000000020
+------checking: tank_000000328
+------checking: tank_000002205
+------checking: tank_000029145
+------checking: tank_000038987
+------checking: tank_000091872
+####processing: tank_000038987 #####
+---hits: tank_000000013 
+---hits: tank_000091872 
+---hits: tank_000038112 
+---hits: tank_000000020 
+---hits: tank_000002205 
+---hits: tank_000001384 
+---hits: tank_000029145 
+---hits: tank_000000328 
+---hits: tank_000000009
+---potential parent: tank_000000013 
+---potential parent: tank_000001384 
+---potential parent: tank_000000009 
+---potential parent: tank_000000020 
+---potential parent: tank_000000328 
+---potential parent: tank_000002205 
+---potential parent: tank_000029145 
+---potential parent: tank_000038112 
+---potential parent: tank_000091872
+------checking: tank_000000013
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 3441 which is OK!
+SETTING tank_000038987 to be an ERROR of tank_000000013
+
+------checking: tank_000001384
+------checking: tank_000000009
+------checking: tank_000000020
+------checking: tank_000000328
+------checking: tank_000002205
+------checking: tank_000029145
+------checking: tank_000038112
+------checking: tank_000091872
+####processing: tank_000040660 #####
+---hits: tank_000027790 
+---hits: tank_000062780 
+---hits: tank_000033433 
+---hits: tank_000033846 
+---hits: tank_000054037
+---potential parent: tank_000027790 
+---potential parent: tank_000033433 
+---potential parent: tank_000054037 
+---potential parent: tank_000062780 
+---potential parent: tank_000033846
+------checking: tank_000027790
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 223 which is OK!
+SETTING tank_000040660 to be an ERROR of tank_000027790
+
+------checking: tank_000033433
+------checking: tank_000054037
+------checking: tank_000062780
+------checking: tank_000033846
+####processing: tank_000042170 #####
+---hits: tank_000036970 
+---hits: tank_000033375
+---potential parent: tank_000033375 
+---potential parent: tank_000036970
+------checking: tank_000033375
+------relative cooccurence: 0
+------checking: tank_000036970
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 9 which is OK!
+SETTING tank_000042170 to be an ERROR of tank_000036970
+
+####processing: tank_000044340 #####
+---hits: tank_000033356 
+---hits: tank_000049627 
+---hits: tank_000063943 
+---hits: tank_000037002 
+---hits: tank_000051981
+---potential parent: tank_000033356 
+---potential parent: tank_000049627 
+---potential parent: tank_000051981 
+---potential parent: tank_000037002 
+---potential parent: tank_000063943
+------checking: tank_000033356
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 3597 which is OK!
+SETTING tank_000044340 to be an ERROR of tank_000033356
+
+------checking: tank_000049627
+------checking: tank_000051981
+------checking: tank_000037002
+------checking: tank_000063943
+####processing: tank_000045041 #####
+---hits: tank_000000556 
+---hits: tank_000056242 
+---hits: tank_000091470 
+---hits: tank_000070022 
+---hits: tank_000035908 
+---hits: tank_000071153 
+---hits: tank_000045788 
+---hits: tank_000069871 
+---hits: tank_000067551 
+---hits: tank_000087482
+---potential parent: tank_000000556 
+---potential parent: tank_000071153 
+---potential parent: tank_000045788 
+---potential parent: tank_000056242 
+---potential parent: tank_000069871 
+---potential parent: tank_000091470 
+---potential parent: tank_000035908 
+---potential parent: tank_000067551 
+---potential parent: tank_000070022 
+---potential parent: tank_000087482
+------checking: tank_000000556
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 44389.5 which is OK!
+SETTING tank_000045041 to be an ERROR of tank_000000556
+
+------checking: tank_000071153
+------checking: tank_000045788
+------checking: tank_000056242
+------checking: tank_000069871
+------checking: tank_000091470
+------checking: tank_000035908
+------checking: tank_000067551
+------checking: tank_000070022
+------checking: tank_000087482
+####processing: tank_000045624 #####
+---hits: tank_000001101
+---potential parent: tank_000001101
+------checking: tank_000001101
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 4354.5 which is OK!
+SETTING tank_000045624 to be an ERROR of tank_000001101
+
+####processing: tank_000046372 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000051392 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000053170 #####
+---hits: tank_000033680 
+---hits: tank_000046123
+---potential parent: tank_000033680 
+---potential parent: tank_000046123
+------checking: tank_000033680
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 452 which is OK!
+SETTING tank_000053170 to be an ERROR of tank_000033680
+
+------checking: tank_000046123
+####processing: tank_000053324 #####
+---hits: tank_000000025
+---potential parent: tank_000000025
+------checking: tank_000000025
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 316 which is OK!
+SETTING tank_000053324 to be an ERROR of tank_000000025
+
+####processing: tank_000054130 #####
+---hits: tank_000000017 
+---hits: tank_000033270
+---potential parent: tank_000000017 
+---potential parent: tank_000033270
+------checking: tank_000000017
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 2985.5 which is OK!
+SETTING tank_000054130 to be an ERROR of tank_000000017
+
+------checking: tank_000033270
+####processing: tank_000054437 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000059691 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000060918 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000063401 #####
+---hits: tank_000000158 
+---hits: tank_000000006 
+---hits: tank_000005093
+---potential parent: tank_000000158 
+---potential parent: tank_000000006 
+---potential parent: tank_000005093
+------checking: tank_000000158
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 678.5 which is OK!
+SETTING tank_000063401 to be an ERROR of tank_000000158
+
+------checking: tank_000000006
+------checking: tank_000005093
+####processing: tank_000063943 #####
+---hits: tank_000049627 
+---hits: tank_000033356 
+---hits: tank_000044340 
+---hits: tank_000037002 
+---hits: tank_000051981
+---potential parent: tank_000033356 
+---potential parent: tank_000049627 
+---potential parent: tank_000051981 
+---potential parent: tank_000037002 
+---potential parent: tank_000044340
+------checking: tank_000033356
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 3597 which is OK!
+SETTING tank_000063943 to be an ERROR of tank_000033356
+
+------checking: tank_000049627
+------checking: tank_000051981
+------checking: tank_000037002
+------checking: tank_000044340
+####processing: tank_000066864 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000067551 #####
+---hits: tank_000000556 
+---hits: tank_000071153 
+---hits: tank_000091470 
+---hits: tank_000045041 
+---hits: tank_000045788 
+---hits: tank_000069871 
+---hits: tank_000070022 
+---hits: tank_000035908 
+---hits: tank_000056242 
+---hits: tank_000064576
+---potential parent: tank_000000556 
+---potential parent: tank_000071153 
+---potential parent: tank_000045788 
+---potential parent: tank_000056242 
+---potential parent: tank_000064576 
+---potential parent: tank_000069871 
+---potential parent: tank_000091470 
+---potential parent: tank_000035908 
+---potential parent: tank_000045041 
+---potential parent: tank_000070022
+------checking: tank_000000556
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 51130 which is OK!
+SETTING tank_000067551 to be an ERROR of tank_000000556
+
+------checking: tank_000071153
+------checking: tank_000045788
+------checking: tank_000056242
+------checking: tank_000064576
+------checking: tank_000069871
+------checking: tank_000091470
+------checking: tank_000035908
+------checking: tank_000045041
+------checking: tank_000070022
+####processing: tank_000067901 #####
+---hits: tank_000000556 
+---hits: tank_000071153 
+---hits: tank_000091470 
+---hits: tank_000045041 
+---hits: tank_000045788 
+---hits: tank_000069871 
+---hits: tank_000056242 
+---hits: tank_000067551 
+---hits: tank_000035908 
+---hits: tank_000064576
+---potential parent: tank_000000556 
+---potential parent: tank_000071153 
+---potential parent: tank_000045788 
+---potential parent: tank_000056242 
+---potential parent: tank_000064576 
+---potential parent: tank_000069871 
+---potential parent: tank_000091470 
+---potential parent: tank_000035908 
+---potential parent: tank_000045041 
+---potential parent: tank_000067551
+------checking: tank_000000556
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 51130 which is OK!
+SETTING tank_000067901 to be an ERROR of tank_000000556
+
+------checking: tank_000071153
+------checking: tank_000045788
+------checking: tank_000056242
+------checking: tank_000064576
+------checking: tank_000069871
+------checking: tank_000091470
+------checking: tank_000035908
+------checking: tank_000045041
+------checking: tank_000067551
+####processing: tank_000070022 #####
+---hits: tank_000000556 
+---hits: tank_000056242 
+---hits: tank_000035908 
+---hits: tank_000045041 
+---hits: tank_000091470 
+---hits: tank_000067551 
+---hits: tank_000071153 
+---hits: tank_000045788 
+---hits: tank_000069871 
+---hits: tank_000087482
+---potential parent: tank_000000556 
+---potential parent: tank_000071153 
+---potential parent: tank_000045788 
+---potential parent: tank_000056242 
+---potential parent: tank_000069871 
+---potential parent: tank_000091470 
+---potential parent: tank_000035908 
+---potential parent: tank_000045041 
+---potential parent: tank_000067551 
+---potential parent: tank_000087482
+------checking: tank_000000556
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 44389.5 which is OK!
+SETTING tank_000070022 to be an ERROR of tank_000000556
+
+------checking: tank_000071153
+------checking: tank_000045788
+------checking: tank_000056242
+------checking: tank_000069871
+------checking: tank_000091470
+------checking: tank_000035908
+------checking: tank_000045041
+------checking: tank_000067551
+------checking: tank_000087482
+####processing: tank_000071290 #####
+---hits: tank_000000005 
+---hits: tank_000033826 
+---hits: tank_000041543 
+---hits: tank_000070122 
+---hits: tank_000001046 
+---hits: tank_000036643 
+---hits: tank_000085106 
+---hits: tank_000036268 
+---hits: tank_000088042 
+---hits: tank_000018178
+---potential parent: tank_000000005 
+---potential parent: tank_000070122 
+---potential parent: tank_000001046 
+---potential parent: tank_000018178 
+---potential parent: tank_000033826 
+---potential parent: tank_000036268 
+---potential parent: tank_000036643 
+---potential parent: tank_000085106 
+---potential parent: tank_000088042 
+---potential parent: tank_000041543
+------checking: tank_000000005
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 2511.5 which is OK!
+SETTING tank_000071290 to be an ERROR of tank_000000005
+
+------checking: tank_000070122
+------checking: tank_000001046
+------checking: tank_000018178
+------checking: tank_000033826
+------checking: tank_000036268
+------checking: tank_000036643
+------checking: tank_000085106
+------checking: tank_000088042
+------checking: tank_000041543
+####processing: tank_000071623 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000078337 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000078440 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000079120 #####
+---hits: tank_000045800
+---potential parent: tank_000045800
+------checking: tank_000045800
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 1
+No parent found!
+
+####processing: tank_000082116 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000087202 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000087482 #####
+---hits: tank_000056242 
+---hits: tank_000000556 
+---hits: tank_000045041 
+---hits: tank_000035908 
+---hits: tank_000091470 
+---hits: tank_000045788 
+---hits: tank_000070022 
+---hits: tank_000071153 
+---hits: tank_000069871 
+---hits: tank_000067551
+---potential parent: tank_000000556 
+---potential parent: tank_000071153 
+---potential parent: tank_000045788 
+---potential parent: tank_000056242 
+---potential parent: tank_000069871 
+---potential parent: tank_000091470 
+---potential parent: tank_000035908 
+---potential parent: tank_000045041 
+---potential parent: tank_000067551 
+---potential parent: tank_000070022
+------checking: tank_000000556
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 44389.5 which is OK!
+SETTING tank_000087482 to be an ERROR of tank_000000556
+
+------checking: tank_000071153
+------checking: tank_000045788
+------checking: tank_000056242
+------checking: tank_000069871
+------checking: tank_000091470
+------checking: tank_000035908
+------checking: tank_000045041
+------checking: tank_000067551
+------checking: tank_000070022
+####processing: tank_000091872 #####
+---hits: tank_000000013 
+---hits: tank_000001384 
+---hits: tank_000038112 
+---hits: tank_000038987 
+---hits: tank_000000020 
+---hits: tank_000002205 
+---hits: tank_000029145 
+---hits: tank_000000328
+---potential parent: tank_000000013 
+---potential parent: tank_000001384 
+---potential parent: tank_000000020 
+---potential parent: tank_000000328 
+---potential parent: tank_000002205 
+---potential parent: tank_000029145 
+---potential parent: tank_000038112 
+---potential parent: tank_000038987
+------checking: tank_000000013
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 2082.5 which is OK!
+SETTING tank_000091872 to be an ERROR of tank_000000013
+
+------checking: tank_000001384
+------checking: tank_000000020
+------checking: tank_000000328
+------checking: tank_000002205
+------checking: tank_000029145
+------checking: tank_000038112
+------checking: tank_000038987
+####processing: tank_000091935 #####
+---hits: tank_000007440
+---potential parent: tank_000007440
+------checking: tank_000007440
+------relative cooccurence: 1 which is sufficient!
+------min avg abundance: 151.5 which is OK!
+SETTING tank_000091935 to be an ERROR of tank_000007440
+
+####processing: tank_000094788 #####
+---hits: 
+---potential parent: 
+No parent found!
+
+####processing: tank_000095479 #####
+---hits: 
+---potential parent: 
+No parent found!

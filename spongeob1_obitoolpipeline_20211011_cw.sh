@@ -107,7 +107,7 @@ ls -lht spongetank.filtered.fasta # make sure it concatenates successful
 
 ###########5. Filter seqs##########
 #echo Filter the seqs with length between 140 and 220 bp and with no 'N' #-p 'count>=10'
-#'^[ACGT]+$' do not work! if i paste directly, i have to type by hand, because atom do not recognize this is a python expression.  
+#'^[ACGT]+$' do not work! if i paste directly, i have to type by hand, because atom do not recognize this is a python expression.
 obigrep -p 'seq_length>140' -p 'seq_length<220' -s '^[ACGT]+$' spongetank.filtered.fasta > spongetank.filtered_length_noN.fasta
 #ls -lht spongetank.filtered_length_noN.fasta
 
@@ -121,12 +121,11 @@ obiuniq -m sample spongetank.filtered_length_noN.fasta > spongetank.unique.fasta
 head -5 spongetank.unique.fasta
 
 ###########8. Exchange the identifier to a short index##########
-#if i use "%10d" here, swarm will show error
 obiannotate --seq-rank spongetank.unique.fasta | obiannotate --set-identifier '"'tank'_%0*d" %(9,seq_rank)' > spongetank.new9.fasta
 head -5 spongetank.new9.fasta
 
 ###########9. convert to vsearch format#####
-#i annotate the install command in the file  "owi_obifasta2vsearch", because the install code is different from the old R version.  
+#i annotate the install command in the file  "owi_obifasta2vsearch", because the install code is different from the old R version.
 #Rscript ~/applications/R_scripts_metabarpark/owi_obifasta2vsearch -i spongetank.new10.fasta -o spongetank.vsearch.fasta
 Rscript /Users/wang/Desktop/ob1_mbc/R_scripts_metabarpark/owi_obifasta2vsearch -i spongetank.new9.fasta -o spongetank.vsearch.fasta
 head -5  spongetank.vsearch.fasta
@@ -137,7 +136,7 @@ wc -l spongetank.vsearch.mod.fasta
 ###########10. CHIMERA DETECTION ##########
 #echo Run UCHIME de novo in VSEARCH
 mkdir vsearch_output
-#vsearch --uchime_denovo spongetank.vsearch.mod.fasta --sizeout --nonchimeras vsearch_output/spongetank.nonchimeras.fasta --chimeras vsearch_output/spongetank.chimeras.fasta --threads 28 --uchimeout vsearch_output/spongetank.uchimeout2.txt &> vsearch_output/log.spongetank_chimeras
+vsearch --uchime_denovo spongetank.vsearch.mod.fasta --sizeout --nonchimeras vsearch_output/spongetank.nonchimeras.fasta --chimeras vsearch_output/spongetank.chimeras.fasta --threads 28 --uchimeout vsearch_output/spongetank.uchimeout2.txt &> vsearch_output/log.spongetank_chimeras
 #sed 's/;/ ;/g' vsearch_output/spongetank.nonchimeras.fasta |grep -e ">" | awk 'sub(/^>/, "")' | awk '{print $1}' > vsearch_output/spongetank.nonchimeras.txt # text file used for owi_recount_sumaclust step
 wc -l ./vsearch_output/spongetank.nonchimeras.fasta
 head -5 ./vsearch_output/spongetank.nonchimeras.fasta
@@ -145,10 +144,13 @@ head -5 ./vsearch_output/spongetank.nonchimeras.fasta
 ###########11. CLUSTERING ##########
 #echo swarm using vsearch nonchimeras file
 mkdir swarm_output
+# -d 1 # default and recommended# # -f # fastidious# # -z # use usearch size= for abundance
 $swarm -d 3 -z -t 10 -o swarm_output/spongetank_SWARM3_output -s swarm_output/spongetank_SWARM3_stats -w swarm_output/spongetank_SWARM3_seeds.fasta vsearch_output/spongetank.nonchimeras.fasta
+$swarm -d 1 -z -t 10 -o swarm_output/spongetank_SWARM1_output -s swarm_output/spongetank_SWARM1_stats -w swarm_output/spongetank_SWARM1_seeds.fasta vsearch_output/spongetank.nonchimeras.fasta
+
 #wc -l ./swarm_output/spongetank_SWARM3_seeds.fasta
 head -5 ./swarm_output/spongetank_SWARM3_seeds.fasta
-
+#seqkit stats swarm_output/spongetank_SWARM3_seeds.fasta #  OTUs
 ################################
 ##### TAXONOMIC ASSIGNMENT #####
 ################################
@@ -206,7 +208,7 @@ sed 's/;/,/g' spongetank_all_SWARM_FINAL_MOTUs.csv > spongetank_all_SWARM_FINAL_
 # i delete "cut" column manually for "spongetank_all_SWARM_FINAL_OTU.csv"
 
 #echo collapse MOTUs
-Rscript ./R_scripts_metabarpark/owi_collapse -s 16 -e 116 -t 0.50 -i spongetank_all_SWARM_FINAL_OTU.csv
+Rscript /Users/wang/Desktop/ob1_mbc/R_scripts_metabarpark/owi_collapse -s 16 -e 116 -t 0.50 -i spongetank_SWARM_OTU_LULU_FULL_20211014.csv
 #-s 14 Sample columns start; -e sample columns end. Default = 98; -t 0.50 Threshold for collapsing
 
 #clean up
