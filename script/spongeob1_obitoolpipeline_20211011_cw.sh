@@ -2,7 +2,8 @@
 ssh beswcai@genome.ljmu.ac.uk #150.204.78.6
 #password
 FuzzyL0g1c!
-ssh genome2 #go to genome2
+#go to genome2
+ssh genome2
 screen #go into virtual environment
 #screen -r  # detached
 #screen -r 88
@@ -15,6 +16,10 @@ screen #go into virtual environment
 #make a directory for reference sequences
 mkdir db_obitools
 mv EMBL_r143* ./db_obitools # move all the files into this folder
+
+scp -r beswcai@genome.ljmu.ac.uk:/home/beswcai/db_obitools beswcai@genome2.ljmu.ac.uk:/home/genome2/beswcai/tank/
+
+/home/beswcai
 #mv to genome2
 scp -r db_obitools beswcai@genome2.ljmu.ac.uk:/home/genome2/beswcai/tank/
 #move data to genome2, stay in genome1 cope files to genome2

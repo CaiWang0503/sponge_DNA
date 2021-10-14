@@ -8,7 +8,9 @@ output: html_document
 ```{r setup, include=FALSE}
 library(tidyverse)
 library(phyloseq)
+library(decontam)
 ```
+
 
 ```{r separate sequnce}
 OTUseq<-read.csv("spongetank_all_SWARM_FINAL_OTU_20211011.csv", header=TRUE)
@@ -51,24 +53,90 @@ OTUseq<-read.csv("spongetank_SWARM_OTU_LULU_FULL_20211014_collapsed.csv", header
 #otu_table
 OTU<-OTUseq %>% select (D1.SW.BLANK:LIB02.PCR.Pos.03)
 rownames(OTU)=OTUseq$id
-OTU <- as.matrix(OTU)
 
 #tax_table
 TAX<-OTUseq %>% select (kingdom_name:species_name)
 rownames(TAX)=OTUseq$id
 TAX <- as.matrix(TAX)
+
 #sample_data
-sampledata= data.frame(colnames=colnames(OTU))
-sampledata$colnames=as.character(sampledata$colnames)
-write.table(sampledata,file="sampledata.txt",row.names = F,quote=F)
+sample_data<-read.csv("sampledata20211014.csv", header=TRUE)
+sample_data$quant_reading=colSums(OTU)
+rownames(sample_data)=sample_data$name
 
-
-physeq_spongetank = phyloseq(OTU, TAX, sampledata)
+#####filter total reads=0 samples
+sample_data=sample_data %>% filter(quant_reading!=0)
+OTU= OTU %>% select(sample_data$name)
+OTU <- as.matrix(OTU)
+###write the phyloseq format
+physeq_spongetank = phyloseq(otu_table(OTU, taxa_are_rows = TRUE), tax_table(TAX), sample_data(sample_data))
 ```
 
 ```{r}
-ps <- readRDS(system.file("extdata", "MUClite.rds", package="decontam"))
-head(sample_data(ps))
-contamdf.freq <- isContaminant(ps, method="frequency", conc="quant_reading")
+contamdf.freq <- isContaminant(physeq_spongetank, method="frequency", conc="quant_reading",batch = "RUN")
+table(contamdf.freq$contaminant)
+decontam.T=contamdf.freq %>% filter(contaminant=="TRUE")
+#plot all the decontam otus
+T.n=which(rownames(OTU)%in% rownames(decondem.T)==TRUE)
+plot_frequency(physeq_spongetank, taxa_names(physeq_spongetank)[c(T.n)], conc="quant_reading") + 
+  xlab("DNA Concentration (PicoGreen fluorescent intensity)")
+TAX[T.n,7]
+#delect decontam=Ture seq.
+ps.noncontam <- prune_taxa(!contamdf.freq$contaminant, physeq_spongetank)
+
+save(ps.noncontam,physeq_spongetank,file = "physeq_spongetank_noncontam.rdata")
+```
+
+```{r}
+OTU<- data.frame(t(as.data.frame(otu_table(ps.noncontam))))
+metadata<- data.frame(sample_data(ps.noncontam)) 
+#OTU.tank<- OTU %>% filter (metadata$experiment=="tank")
+#OTU.tank.water<- OTU %>% filter (metadata$sponge_type=="WATER" & metadata$experiment=="tank")
+
+metadata.hour<- metadata %>% filter (metadata$hour != "CONTROL" & metadata$hour != "BLANK" & metadata$hour != "NO" & metadata$hour != "Pos"  & metadata$hour != "Neg")
+metadata.hour <- metadata.hour %>%
+  mutate(
+    hour = case_when(
+      hour == "env" ~ "0",
+      hour == "0" ~ "48",
+      hour == "1" ~ "24",
+      hour == "4" ~ "52",
+      hour == "8" ~ "56",
+      hour == "24" ~ "72",
+      hour == "48" ~ "96",
+      hour == "72" ~ "120",
+      TRUE ~ as.character(hour)
+    )
+  )
+
+metadata.hour$hour=as.numeric(metadata.hour$hour)
+
+#total reads
+ggplot(data=metadata.hour, aes(x=hour, y=quant_reading, colour= tank))+ geom_line(size=0.3)+geom_point()+facet_wrap(~sponge_type, nrow =8)
+
+#species
+OTU.tank=OTU %>% filter (metadata$hour != "CONTROL" & metadata$hour != "BLANK" & metadata$hour != "NO" & metadata$hour != "Pos"  & metadata$hour != "Neg")
+otu.Amphiprion=OTU.tank%>% select(tank_000000028)
+otu.Chromis=OTU.tank %>% select(tank_000000158)
+otu.a=OTU.tank %>% select(tank_000000013)
+otu.b=OTU.tank %>% select(tank_000000035)
+otu.c=OTU.tank %>% select(tank_000000021)
+
+metadata.hour.1=bind_cols(metadata.hour,otu.Amphiprion) %>% mutate(species="Amphiprion")%>% rename(read = tank_000000028)
+metadata.hour.2=bind_cols(metadata.hour,otu.Chromis) %>% mutate(species="Chromis")%>% rename(read = tank_000000158)
+metadata.hour.3=bind_cols(metadata.hour,otu.a) %>% mutate(species="Zebrasoma")%>% rename(read = tank_000000013)
+metadata.hour.4=bind_cols(metadata.hour,otu.b) %>% mutate(species="Gramma")%>% rename(read = tank_000000035)
+metadata.hour.5=bind_cols(metadata.hour,otu.c) %>% mutate(species="Hippocampus")%>% rename(read = tank_000000021)
+
+metadata.hour=bind_rows(metadata.hour.1,metadata.hour.2,metadata.hour.3,metadata.hour.4,metadata.hour.5)
+
+ggplot(data=metadata.hour, aes(x=hour, y=read, colour= species))+ geom_line(size=0.3)+geom_point()+facet_grid(sponge_type ~ tank)
+ggplot(data=metadata.hour, aes(x=hour, y=read, colour= sponge_type))+ geom_line(size=0.3)+geom_point()+facet_grid(species ~ tank)
+
+metadata.hour.water=metadata.hour %>% filter(sponge_type=="WATER")
+metadata.hour.CREAM=metadata.hour %>% filter(sponge_type=="CREAM")
+metadata.hour.pine=metadata.hour %>% filter(sponge_type=="PINK")
+
+ggplot(data=metadata.hour.pine, aes(x=hour, y=read, colour= species))+ geom_line(size=0.3)+geom_point()+facet_grid(species ~ tank)
 ```
 
