@@ -113,9 +113,9 @@ ls -lht spongetank.filtered.fasta # make sure it concatenates successful
 ###########5. Filter seqs##########
 #echo Filter the seqs with length between 140 and 220 bp and with no 'N' #-p 'count>=10'
 #'^[ACGT]+$' do not work! if i paste directly, i have to type by hand, because atom do not recognize this is a python expression.
-obigrep -p 'seq_length>140' -p 'seq_length<220' -s '^[ACGT]+$' spongetank.filtered.fasta > spongetank.filtered_length_noN.fasta
+obigrep -p 'seq_length>130' -p 'seq_length<190' -s '^[ACGT]+$' spongetank.filtered.fasta > spongetank.filtered_length_noN.fasta
 #ls -lht spongetank.filtered_length_noN.fasta
-
+wc -l spongetank.filtered_length_noN.fasta
 ###########6. Get the count statistics##########
 #echo Calculate stats per sample
 obistat -c sample -a seq_length spongetank.filtered_length_noN.fasta > sample_stats_spongetank.length_filter.txt
@@ -150,9 +150,10 @@ head -5 ./vsearch_output/spongetank.nonchimeras.fasta
 #echo swarm using vsearch nonchimeras file
 mkdir swarm_output
 # -d 1 # default and recommended# # -f # fastidious# # -z # use usearch size= for abundance
-$swarm -d 3 -z -t 10 -o swarm_output/spongetank_SWARM3_output -s swarm_output/spongetank_SWARM3_stats -w swarm_output/spongetank_SWARM3_seeds.fasta vsearch_output/spongetank.nonchimeras.fasta
-$swarm -d 1 -z -t 10 -o swarm_output/spongetank_SWARM1_output -s swarm_output/spongetank_SWARM1_stats -w swarm_output/spongetank_SWARM1_seeds.fasta vsearch_output/spongetank.nonchimeras.fasta
-
+swarm -d 3 -z -t 20 -o swarm_output/spongetank_SWARM3_output -s swarm_output/spongetank_SWARM3_stats -w swarm_output/spongetank_SWARM3_seeds.fasta vsearch_output/spongetank.nonchimeras.fasta
+$swarm -d 1 -z -t 20 -o swarm_output/spongetank_SWARM1_output -s swarm_output/spongetank_SWARM1_stats -w swarm_output/spongetank_SWARM1_seeds.fasta vsearch_output/spongetank.nonchimeras.fasta
+$swarm -d 5 -z -t 20 -o swarm_output/spongetank_SWARM5_output -s swarm_output/spongetank_SWARM5_stats -w swarm_output/spongetank_SWARM5_seeds.fasta vsearch_output/spongetank.nonchimeras.fasta
+wc -l spongetank_SWARM3_seeds.fasta
 #wc -l ./swarm_output/spongetank_SWARM3_seeds.fasta
 head -5 ./swarm_output/spongetank_SWARM3_seeds.fasta
 #seqkit stats swarm_output/spongetank_SWARM3_seeds.fasta #  OTUs
@@ -161,7 +162,7 @@ head -5 ./swarm_output/spongetank_SWARM3_seeds.fasta
 ################################
 scp -r beswcai@genome.ljmu.ac.uk:/home/beswcai/db_obitools/  /Users/wang/Desktop/
 #Use ecoPCR to simulate an in silico` PCR for teleo2 primer
-ecoPCR -d ./taxo_peter20211011/EMBL_r143 -e 3 -l 140 -L 220 AAACTCGTGCCAGCCACC GGGTATCTAATCCCAGTTTG > tele02.ecopcr
+ecoPCR -d ./taxo_peter20211011/EMBL_r143 -e 3 -l 130 -L 190 AAACTCGTGCCAGCCACC GGGTATCTAATCCCAGTTTG > tele02.ecopcr
 mkdir
 #Clean the database
 obigrep -d ./taxo_peter20211011/EMBL_r143 --require-rank=species --require-rank=genus --require-rank=family tele02.ecopcr > tele02_clean.fasta
@@ -170,56 +171,53 @@ obigrep -d ./taxo_peter20211011/EMBL_r143 --require-rank=family tele02_clean_uni
 obiannotate --uniq-id tele02_clean_uniq_clean.fasta > db_tele02.fasta
 
 ####################################################################
-ecotag -d ./taxo_peter20211011/EMBL_r143 -R db_tele02.fasta --sort=count -r ./demulti/swarm_output/spongetank_SWARM3_seeds.fasta > spongetank_SWARM3.ecotag.fasta
+ecotag -d ./db_obitools/taxo_peter20211011/EMBL_r143 -R db_tele02_embl143_20211011.fasta --sort=count -r ./demulti/swarm_output/spongetank_SWARM3_seeds.fasta > spongetank_SWARM3.ecotag.fasta
+
 sed 's/;s/; s/g' spongetank_SWARM3.ecotag.fasta > spongetank_SWARM3.ecotag_NEW.fasta
-
-#mkdir ecotag
-#cd ecotag
-#echo here use the script "submit_parallel_ecotag.sh" to parallelize the ecotag command, you need to edit the paths to you sumaclust generated
-#echo fasta file, e.g. cobble2012.sumaclust95.centers.fasta, and ecopcr database. This script generates files and folders by splitting the
-#echo cobble2012.sumaclust95.centers.fasta file into 100 sequences per file and 100 files per folder. It will generate  as many files/folders.
-#echo You can set the split files into hatever you like and it will run each file as a separate job. Typically 100 sequneces per file run in about ~10-15 minutes.
-#sh submit_parallel_ecotag.sh
-#echo Once the previous step has complete, e.g. overnight, concatenate all *.ecotag.fasta from all folders
-#ecotag_results=~/stanford/Cobble_final/ecotag_all/
-#cat $(find $ecotag_results -name '*.ecotag.fasta' | xargs)> ecotag_all/cobble2012.ecotag.fasta
-
-#echo sort ecotag.fasta
-#grep ">" spongetank_SWARM3.ecotag.fasta | sed 's/>//g' | sort -k1.6n > spongetank.ecotag_idlist.txt
-#cdbfasta spongetank_SWARM3.ecotag.fasta -o spongetank.ecotag.fasta.index
-#cat spongetank.ecotag_idlist.txt | cdbyank spongetank.ecotag.fasta.index > spongetank_SWARM3.ecotag_sorted.fasta
-#rm cobble2012.ecotag.fasta.index
-#rm spongetank.ecotag_idlist.txt
+#peter has a parallel script to boost running (for large dataset), please find the command on the original script.
 
 ######################
 ##R scripts for reformatting metabarcoding databases CREDIT: OWEN WANGENSTEEN Find R scripts here: https://github.com/metabarpark/R_scripts_metabarpark
 #echo Add taxa above order level
-
-#Rscript ~/applications/R_scripts_metabarpark/owi_add_taxonomy ecotag_all/cobble2012.ecotag_sorted.fasta cobble2012.ecotag.fasta.annotated.csv
 #change  dir_taxo <- "/Users/wang/Desktop/ob1_mbc/R_scripts_metabarpark/dir_taxo/"
+
+#Rscript ~/applications/R_scripts_metabarpark/owi_add_taxonomy spongetank_SWARM3.ecotag.annotated.csv > spongetank_SWARM3.ecotag.annotated_id.csv
+###important!!######change  dir_taxo <- "/Users/wang/Desktop/ob1_mbc/R_scripts_metabarpark/dir_taxo/"
 Rscript ./R_scripts_metabarpark/owi_add_taxonomy spongetank_SWARM3.ecotag_NEW.fasta spongetank_SWARM3.ecotag.annotated.csv
 sed 's/;";/";/g' spongetank_SWARM3.ecotag.annotated.csv > spongetank_SWARM3.ecotag.annotated_id.csv
 rm spongetank_SWARM3.ecotag.annotated.csv
 #echo recount abundance by sample
 obitab -o ./demulti/spongetank.new9.fasta > spongetank.new.tab
 #Rscript ~/applications/R_scripts_metabarpark/owi_recount_swarm ./demulti/swarm_output/spongetank_SWARM3_output spongetank.new.tab
-Rscript ./R_scripts_metabarpark/owi_recount_swarm ./demulti/swarm_output/spongetank_SWARM3_output spongetank.new.tab
-mv ./demulti/swarm_output/spongetank_SWARM3_output.counts.csv  spongetank_SWARM3_output.counts.csv
+Rscript ./R_scripts_metabarpark/owi_recount_swarm ./demulti/swarm_output/spongetank_SWARM5_output spongetank.new.tab
+mv ./demulti/swarm_output/spongetank_SWARM5_output.counts.csv  spongetank_SWARM5_output.counts.csv
 
 #echo combine ecotag and abundance files
 #Rscript ~/peter/applications/R_scripts_metabarpark/owi_combine -i cobble2012.ecotag.fasta.annotated.csv -a swarm/cobble2012_SWARM13_output.counts.csv -o cobble2012_all_SWARM_FINAL_MOTUs.csv
-Rscript ./R_scripts_metabarpark/owi_combine -i spongetank_SWARM3.ecotag.annotated_id.csv -a spongetank_SWARM3_output.counts.csv -o spongetank_all_SWARM_FINAL_MOTUs.csv
-sed 's/;/,/g' spongetank_all_SWARM_FINAL_MOTUs.csv > spongetank_all_SWARM_FINAL_OTU.csv
+Rscript ./R_scripts_metabarpark/owi_combine -i spongetank_SWARM5.ecotag.annotated_id.csv -a spongetank_SWARM5_output.counts.csv -o spongetank_all_SWARM5_FINAL_MOTUs.csv
+sed 's/;/,/g' spongetank_all_SWARM5_FINAL_MOTUs.csv > spongetank_all_SWARM5_FINAL_OTU.csv
+rm spongetank_all_SWARM5_FINAL_MOTUs.csv
 # i delete "cut" column manually for "spongetank_all_SWARM_FINAL_OTU.csv"
-
-#echo collapse MOTUs
-Rscript /Users/wang/Desktop/ob1_mbc/R_scripts_metabarpark/owi_collapse -s 16 -e 116 -t 0.50 -i spongetank_SWARM_OTU_LULU_FULL_20211014.csv
-#-s 14 Sample columns start; -e sample columns end. Default = 98; -t 0.50 Threshold for collapsing
 
 #clean up
 mv spongetank_SWARM3* ./intermediate
 mv spongetank.new.tab ./intermediate
-mv spongetank_all_SWARM_FINAL_MOTUs.csv ./intermediate
+#mv spongetank_all_SWARM_FINAL_MOTUs.csv ./intermediate
 #move final files to github folder for upload
-cp spongetank_all_SWARM_FINAL_OTU_collapsed.csv /Users/wang/src/sponge_DNA/
-cp spongetank_all_SWARM_FINAL_OTU.csv /Users/wang/src/sponge_DNA/
+#cp spongetank_all_SWARM_FINAL_OTU_collapsed.csv /Users/wang/src/sponge_DNA/
+cp spongetank_all_SWARM*_FINAL_OTU.csv /Users/wang/src/sponge_DNA/
+
+
+
+#echo collapse MOTUs
+#Rscript /Users/wang/Desktop/ob1_mbc/R_scripts_metabarpark/owi_collapse -s 16 -e 116 -t 0.50 -i spongetank_SWARM_OTU_LULU_FULL_20211014.csv
+#-s 14 Sample columns start; -e sample columns end. Default = 98; -t 0.50 Threshold for collapsing
+
+
+#local blastn
+cat Tetrapoda_UK_species_12sgenbank_nogap_edit.fas fish_harper_refdata_20190726.fa > Uk.species_local.database.fas
+mkdir local_blast
+mv Gramma_loreto.fasta local_blast/Gramma_loreto.fasta
+cd local_blast
+makeblastdb -in Gramma_loreto.fasta -dbtype nucl # make the uk ref dataset BLASTABLE
+blastn -db /Users/wang/src/sponge_DNA/tank_experiment_20211015/local_blast/Gramma_loreto.fasta -query /Users/wang/src/sponge_DNA/tank_experiment_20211015/spongetank_all_SWARM3_FINAL_OTU.fasta -num_threads 3  -max_target_seqs 1 -outfmt 6 -out sponge_query_Gramma_loreto20211019.txt
