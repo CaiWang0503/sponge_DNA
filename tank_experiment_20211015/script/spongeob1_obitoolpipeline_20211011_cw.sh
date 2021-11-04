@@ -1,7 +1,7 @@
 ##################################log in##################################
 ssh beswcai@genome.ljmu.ac.uk #150.204.78.6
 #password
-FuzzyL0g1c!
+XXXXXXX
 #go to genome2
 ssh genome2
 screen #go into virtual environment
