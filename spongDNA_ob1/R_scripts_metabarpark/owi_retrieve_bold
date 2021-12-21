@@ -1,0 +1,35 @@
+#!/usr/bin/Rscript
+library(optparse) 
+library(bold) 
+library(taxize) 
+
+option_list = list(
+  make_option(c("-i", "--infile"), type="character", default=NULL,
+              help="Name of file containing taxa to retrieve from BOLD", metavar="character")
+  ) 
+opt_parser = OptionParser(option_list=option_list); 
+opt = parse_args(opt_parser); 
+taxon <- as.vector(readLines(opt$infile)) 
+
+logfile <- paste("Retrieve_bold_",Sys.time(),".log",sep="") 
+
+for (k in 1:length(taxon)){
+  time <- Sys.time() # get time
+  data <- bold_seq(taxon=taxon[k])
+  
+  if(length(data)!=0){
+    cat(file=paste(taxon[k], "_BOLD.fasta", sep="")) # delete old file
+    for (i in 1:length(data)){
+      data[i][[1]][5] <- get_uid(data[i][[1]][2])
+      mod<-paste(data[i][[1]][2])
+	data[i][[1]][6] <- tax_rank(mod ,db="ncbi",verbose = F)
+      exp <- paste(">", data[i][[1]][1], "; scientific_name=", data[i][[1]][2], "; taxid=",data[i][[1]][5],
+                   "; rank=",data[i][[1]][6],";\n", gsub("-", "", data[i][[1]][4]), "\n", sep="")
+      cat(exp, file=paste(taxon[k], "_BOLD.fasta", sep=""), append=T)
+    }
+  }
+  time <- Sys.time() - time
+  message(paste("Downloaded ", length(data)," sequences for ", taxon[k], " in ", format(time, digits=2), " from BOLD.", sep=""))
+  cat(paste(taxon[k],"\t", length(data), "\t", format(time, digits=2), "\n", sep=""), file= logfile, sep="", append=T)
+}
+cat("#Bold_data_end\n\n", file= logfile, sep="", append=T)
