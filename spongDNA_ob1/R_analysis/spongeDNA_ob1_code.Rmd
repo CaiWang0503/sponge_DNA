@@ -21,142 +21,7 @@ library(conflicted)
 conflict_prefer("filter", "dplyr")
 conflict_prefer("select", "dplyr")
 ```
-#######first filter: otu collapsing##########
-firstly, extracting the sequences from the final file 
-```{r separate sequnce}
-OTUseq<-read.csv("~/src/sponge_DNA/spongDNA_ob1/sep_reef/spongetank_10reads_SWARM3_FINAL_OTUs.csv", header=TRUE)
-seq<-apply(OTUseq, 1, function(x){paste0(">",x[1],"\n",x[109])})
-writeLines(seq)
-write.table(seq,file="spongetank_10reads_SWARM3_FINAL_OTUs.fasta",row.names = F,quote=F)
-#delete x
-names(OTUseq)
-OTUtab<-OTUseq %>% select (D1.SW.BLANK:LIB02.PCR.Pos.03)
-rownames(OTUtab)=OTUseq$id
-```
-then using lulu to collapse
-```{r code for LuLu (use to fiter ech OTU), eval=FALSE }
-#1.#filter echo OTU
-##terminal##vsearch --usearch_global spongetank_10reads_SWARM3_FINAL_OTUs.fasta --db spongetank_10reads_SWARM3_FINAL_OTUs.fasta --self --id .84 --iddef 1 --userout match_list.txt -userfields query+target+id --maxaccepts 0 --query_cov .9 --maxhits 10 
-#install.packages("devtools")
-#library(devtools)
-#install_github("tobiasgf/lulu") 
-library(lulu)
-matchlist <- read.table("match_list.txt", header=FALSE,as.is=TRUE, stringsAsFactors=FALSE)
 
-curated_result <- lulu(OTUtab, matchlist, minimum_ratio_type = "min", minimum_ratio = 1, minimum_match = 84, minimum_relative_cooccurence = 0.95)
-#compare the result
-#curated_result$curated_table
-#curated_result$original_table
-curated_result$discarded_coun
-OTUtax <-OTUseq[OTUseq$id %in% rownames(curated_result$curated_table),]
-write.csv(OTUtax, file = "spongetank_10reads_SWARM3_OTU_LULU_20211207.csv",row.names = F, quote = FALSE)
-rm(list=ls())
-```
-after using lulu, there still some OTUs obviously belong to same species like homo, so use metabarpark script to collapse again. 
-```{r collapse OTUs on terminal}
-#collapse MOTUs on terminal
-#Rscript /Users/wang/Desktop/stefano_lab/bioinformatics/ob1_mbc/R_scripts_metabarpark/owi_collapse -s 16 -e 116 -t 0.50 -i spongetank_SWARM5_OTU_LULU_FULL_20211019.csv
-#-s 14 Sample columns start; -e sample columns end. Default = 98; -t 0.50 Threshold for collapsing
-```
-#######second filter: filtering OTU with reads <10
-according to positive control, The smallest read is 11, so we select 10 as the threshold to filter "OTU[OTU <= 10] <- 0"and we plot all control samples with unfiltered OTU and reads.#####
-
-before filter we do two more formative steps:
-one: transfer data to phyloseq format
-```{r phyloseq formal}
-OTUseq<-read.csv("spongetank_10reads_SWARM3_OTU_LULU_20211207_collapsed_manual.csv", header=TRUE)
-#otu_table
-names(OTUseq)
-OTU<-OTUseq %>% select (D1.SW.BLANK:LIB02.PCR.Pos.03)
-rownames(OTU)=OTUseq$id
-
-#tax_table
-TAX<-OTUseq %>% select (kingdom_name:species_name)
-rownames(TAX)=OTUseq$id
-TAX <- as.matrix(TAX)
-
-#sample_data
-sample_data<-read.csv("sampledata_full_20211207.csv", header=TRUE)
-sample_data=arrange(sample_data,name)
-otusum=data.frame(name=names(OTU),quant_reading=colSums(OTU))
-otusum=arrange(otusum,name)
-sample_data=left_join(sample_data,otusum,by="name")
-rownames(sample_data)=sample_data$name
-
-#####filter total reads=0 samples
-sample_data=sample_data %>% filter(quant_reading!=0)
-OTU= OTU %>% select(sample_data$name)
-OTU <- as.matrix(OTU)
-###write the phyloseq format
-physeq_spongetank = phyloseq(otu_table(OTU, taxa_are_rows = TRUE), tax_table(TAX), sample_data(sample_data))
-
-test=data.frame(otu_table(physeq_spongetank))
-colSums(test)
-save(physeq_spongetank,file = "physeq_spongetank.rdata")
-```
-two: we correct species name manually, each OTU assigned to a species will be renamed to its species name
-```{r tax_name correction}
-OTU<- data.frame(t(as.data.frame(otu_table(physeq_spongetank))))
-metadata<- data.frame(sample_data(physeq_spongetank)) 
-TAX=data.frame(tax_table(physeq_spongetank))
-OTUname=data.frame(OTU=rownames(TAX),family=TAX$family_name,genus=TAX$genus_name,species=TAX$species_name)
-OTUname$species=as.character(OTUname$species)
-OTUname$OTU=as.character(OTUname$OTU)
-OTUname=raster::trim(OTUname)
-
-for (i in 1:length(OTUname$species)) {
-  if(OTUname$species[i]=="")
-    OTUname$species[i] = paste0(OTUname$genus[i]," ","sp" )
-  if(OTUname$genus[i]=="")
-    OTUname$species[i] = paste0("f_",OTUname$family[i],"sp" )
-}
-for (i in 1:length(OTUname$species)) {
-  if(OTUname$species[i]=="f_sp")
-    OTUname$species[i] = paste0("OTU",i)
-}
-OTUname$species=gsub(" ", "_", OTUname$species)
-
-
-TAX$species_name=OTUname$species
-#collapse two Chromis and Zebrasoma sp into one otu
-names(OTU)
-OTU <- OTU %>% mutate(Chromis_viridis = 	tank_000000068 + tank_000000005) 
-OTU <- OTU %>% select(-tank_000000068,-tank_000000005)
-OTU <- OTU %>% mutate(Zebrasoma_veliferum = tank_000000388 + tank_000000008) 
-OTU <- OTU %>% select(-tank_000000388,-tank_000000008)
-OTU <- rotate_df(OTU)
-OTU$OTU=rownames(OTU)
-OTU2=left_join(OTU,OTUname,by="OTU")
-OTU2$species[54]=OTU2$OTU[54]
-OTU2$species[55]=OTU2$OTU[55]
-rownames(OTU2)=OTU2$species
-rownamesOTU2=rownames(OTU2)
-OTU2 <- OTU2 %>% select(-OTU,-family,-species,-genus)
-OTU2<- apply(OTU2,2,as.numeric)
-rownames(OTU2)=rownamesOTU2
-
-TAX$OTU=rownames(TAX)
-TAX <- TAX %>% filter(OTU!="tank_000000068" & OTU!="tank_000000388")
-rownames(TAX)=TAX$species_name
-TAX <- TAX %>% select(-OTU)
-TAX$genus_name=as.character(TAX$genus_name)
-TAX$family_name=as.character(TAX$family_name)
-TAX=raster::trim(TAX)
-for (i in 1:length(TAX$genus_name)) {
-  if(TAX$genus_name[i]=="")
-    TAX$genus_name[i] = paste0("unassigned")
-  if(TAX$family_name[i]=="")
-    TAX$family_name[i] = paste0("unassigned")
-}
-for (i in 1:length(TAX$species_name)) {
-  if(TAX$genus_name[i]=="unassigned")
-    TAX$species_name[i]=paste0("unassigned")
-}
-TAX=as.matrix(TAX)
-
-physeq_spongetank = phyloseq(otu_table(OTU2, taxa_are_rows = TRUE), tax_table(TAX), sample_data(metadata))
-save(physeq_spongetank,file = "physeq_spongetank_20211220.rdata")
-```
 before filtering small reads, separate and plot the controls and samples
 ```{r pheatmap}
 rm(list=ls())
@@ -316,9 +181,9 @@ p3=plot(OTU.pro.plotC)
 ggpubr::ggarrange(p1,p2,p3,ncol=3,nrow=1,labels=c("A","B","C"),common.legend = T)
 ```
 
-#######third filter: here we only keep targeted species for following analysis#####
+####### filter: here we only keep targeted species for following analysis#####
 filtering OTU that show in "day one sponge samples", which are carried into the tanks by rocks and spongeself, one OTU (contamination) show in sterivex filter blank, and all unassigned OTUs.
-```{r third filter}
+```{r  filter}
 #remove positive control and human
 OTU.sam=OTU.sam %>% select(Amphiprion_ocellaris,Chromis_viridis,Zebrasoma_veliferum,Hippocampus_semispinosis,Gramma_loreto)
 TAX=data.frame(tax_table(physeq_spongetank))
