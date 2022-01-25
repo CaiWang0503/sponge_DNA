@@ -31,7 +31,9 @@ s.reads<-sort(apply(OTU,1,sum))#13331.82, 6192.966
 sd(s.reads);mean(s.reads)
 o.reads<-sort(apply(OTU,2,sum))#29814.04, 10021.35
 sd(o.reads); mean(o.reads)
-
+#summary the total number of reads
+summary1=data.frame(name=names(OTU),sum=colSums(OTU))
+#write_csv(summary1, "summary.csv")
 metadata<- data.frame(sample_data(physeq_spongetank))
 OTU.sam=OTU %>% filter(metadata$hour!="env" & metadata$hour!="CONTROL" & metadata$hour!="Pos")
 OTU.ctl=OTU %>% filter(metadata$hour=="env" | metadata$hour=="CONTROL" | metadata$hour=="Pos")
@@ -60,7 +62,7 @@ rownames(annotation_row) = metadata.ctl$name
 ann_colors = list(tank = c(	FILT= "#E41A1C",CONTROL= "#377EB8",	EXT="#4DAF4A",PCR="#984EA3",SW="#FF7F00",TANKA="#FFFF33",TANKB="#A65628",TANKC="#F781BF"))
 colvec <- brewer.pal(9, "Blues")
 colvec <-c("white",colvec,"#053061") 
-#ann_colors<- brewer.pal(8, "Set1")
+ann_colors<- brewer.pal(8, "Set1")
 pheatmap(communityphm,annotation_colors = ann_colors,annotation_row = annotation_row,cluster_rows = F,cluster_cols = F,border_color = NA,color= colvec, clustering_method="ward.D2",fontsize_row=8,margins=c(5,10),gaps_row = c(16),gaps_col = c(11))
 #remove small reads and plot again
 communityphm2=log(communityphm2)
@@ -73,7 +75,7 @@ communityphm2<-communityphm2[,or]
 pheatmap(communityphm2,annotation_colors = ann_colors,annotation_row = annotation_row,cluster_rows = F,cluster_cols = F,border_color = NA,color= colvec, clustering_method="ward.D2",fontsize_row=8,margins=c(5,10))
 rm(communityphm,communityphm2)
 
-#set group
+####################set group for sample
 communityphm<-OTU.sam
 communityphm$control<-metadata.sam$tank
 communityphm<-arrange(communityphm, control)
@@ -90,13 +92,10 @@ or<-order(names(communityphm))
 or<-c(1,4,9,3,5,11,8,2,26,10,6,7,12:25)
 communityphm<-communityphm[,or]
 
-annotation_row = data.frame(control=metadata.sam$tank)
-rownames(annotation_row) = metadata.sam$name
-ann_colors = list(tank = c(TANKA="#FFFF33",TANKB="#A65628",TANKC="#F781BF"))
 colvec <- brewer.pal(9, "Blues")
 colvec <-c("white",colvec,"#053061") 
 #ann_colors<- brewer.pal(8, "Set1")
-pheatmap(communityphm,annotation_colors = ann_colors,annotation_row = annotation_row,cluster_rows = F,cluster_cols = F,border_color = NA,color= colvec, clustering_method="ward.D2",fontsize_row=8,margins=c(5,10))
+pheatmap(communityphm,cluster_rows = F,cluster_cols = F,border_color = NA,color= colvec, clustering_method="ward.D2",fontsize_row=8,margins=c(5,10))
 #,gaps_row = c(16),gaps_col = c(11)
 #remove small reads and plot again
 communityphm2=log(communityphm2)
@@ -104,9 +103,9 @@ communityphm2[communityphm2 == "-Inf"] <- 0
 exclude2 = which(colSums(communityphm2) == 0)
 communityphm2=communityphm2[,-exclude2]
 or<-order(names(communityphm2))
-or<-c(1,3,4,6,20,2,5,7:19)
+#or<-c(1,3,4,6,20,2,5,7:19)
 communityphm2<-communityphm2[,or]
-pheatmap(communityphm2,annotation_colors = ann_colors,annotation_row = annotation_row,cluster_rows = F,cluster_cols = F,border_color = NA,color= colvec, clustering_method="ward.D2",fontsize_row=8,margins=c(5,10))
+pheatmap(communityphm2,cluster_rows = F,cluster_cols = F,border_color = NA,color= colvec, clustering_method="ward.D2",fontsize_row=8,margins=c(5,10))
 #rm(communityphm)
 
 ```
@@ -118,8 +117,6 @@ load("physeq_spongetank_20211220.rdata")
 OTU<- data.frame(t(as.data.frame(otu_table(physeq_spongetank))))
 metadata<- data.frame(sample_data(physeq_spongetank))
 OTU[OTU <= 10] <- 0
-#summary the total number of reads
-summary1=data.frame(name=names(OTU),sum=colSums(OTU))
 #from now on, we only analysis samples and exclude controls
 OTU.sam=OTU %>% filter(metadata$hour!="env" & metadata$hour!="CONTROL" & metadata$hour!="Pos")
 exclude = which(colSums(OTU.sam) == 0)
@@ -181,9 +178,9 @@ p3=plot(OTU.pro.plotC)
 ggpubr::ggarrange(p1,p2,p3,ncol=3,nrow=1,labels=c("A","B","C"),common.legend = T)
 ```
 
-####### filter: here we only keep targeted species for following analysis#####
+#######third filter: here we only keep targeted species for following analysis#####
 filtering OTU that show in "day one sponge samples", which are carried into the tanks by rocks and spongeself, one OTU (contamination) show in sterivex filter blank, and all unassigned OTUs.
-```{r  filter}
+```{r third filter}
 #remove positive control and human
 OTU.sam=OTU.sam %>% select(Amphiprion_ocellaris,Chromis_viridis,Zebrasoma_veliferum,Hippocampus_semispinosis,Gramma_loreto)
 TAX=data.frame(tax_table(physeq_spongetank))
@@ -203,89 +200,32 @@ save(OTU.sam,metadata.sam,TAX,file = "sample_data_only_20211220.rdata")
 
 #######statistical analysis start here##########
 Q1:Does reads relate to detection rate or species size?
-```{r}
+```{r load and format data}
 rm(list=ls())
 load("sample_data_only_20211220.rdata")
 OTU.sam=log(OTU.sam)
 OTU.sam[OTU.sam == "-Inf"] <- 0
-OTU.sam2=OTU.sam
-OTU.sam2[OTU.sam2 > 0] <- 1
-speciesinfo.t=data.frame(detection=colSums(OTU.sam2),logreads=colSums(OTU.sam),
-name=c("Amphiprion ocellaris","Chromis viridis","Zebrasoma veliferum","Hippocampus semispinosis","Gramma loreto"))
-
-ggplot(data = speciesinfo.t,aes(x = detection, y = logreads,label=name))+geom_point()+theme_classic()+ylab("log(reads)")+geom_smooth(method = "lm",se=T)+geom_text_repel(size=2)+scale_x_continuous(limits=c(0,35),breaks=seq(5,35,5))
-
-#seprate sample type,c("SP.CREAM","SP.PINK","WATER")
-OTU.sam.p=OTU.sam %>% filter(metadata.sam$sponge_type=="SP.PINK")
-OTU.sam.p2=OTU.sam.p
-OTU.sam.p2[OTU.sam.p2 > 0] <- 1
-speciesinfo.p=data.frame(detection=colSums(OTU.sam.p2),logreads=colSums(OTU.sam.p),
-name=c("Amphiprion ocellaris","Chromis viridis","Zebrasoma veliferum","Hippocampus semispinosis","Gramma loreto"))
-speciesinfo.p$sample="PINK"
-OTU.sam.c=OTU.sam %>% filter(metadata.sam$sponge_type=="SP.CREAM")
-OTU.sam.c2=OTU.sam.c
-OTU.sam.c2[OTU.sam.c2 > 0] <- 1
-speciesinfo.c=data.frame(detection=colSums(OTU.sam.c2),logreads=colSums(OTU.sam.c),
-name=c("Amphiprion ocellaris","Chromis viridis","Zebrasoma veliferum","Hippocampus semispinosis","Gramma loreto"))
-speciesinfo.c$sample="CREAM"
-OTU.sam.w=OTU.sam %>% filter(metadata.sam$sponge_type=="WATER")
-OTU.sam.w2=OTU.sam.w
-OTU.sam.w2[OTU.sam.w2 > 0] <- 1
-speciesinfo.w=data.frame(detection=colSums(OTU.sam.w2),logreads=colSums(OTU.sam.w),
-name=c("Amphiprion ocellaris","Chromis viridis","Zebrasoma veliferum","Hippocampus semispinosis","Gramma loreto"))
-speciesinfo.w$sample="WATER"
-speciesinfo=bind_rows(speciesinfo.w,speciesinfo.p,speciesinfo.c)
-col=c("#FFB90F", "#8B008B", "#7AC5CD")
-ggplot(data = speciesinfo,aes(x = detection, y = logreads,color=sample,label=name,shape=name))+geom_point()+theme_classic()+ylab("log(reads)")+geom_text_repel(size=2)+scale_x_continuous(limits=c(0,10),breaks=seq(0,10,1))+scale_color_manual(values=col)
-```
-A: for all, Adjusted R-squared:  0.9727 p= 0.00125 ** high relation
-
-Q2:Does reads and detection rate relate to time, differ from type?
-```{r}
-#total
-metadata.sam$sampleread=rowSums(OTU.sam)
-metadata.sam$hour=as.numeric(as.character(metadata.sam$hour))
-ggplot(data = metadata.sam,aes(x = hour, y = sampleread,color=sponge_type))+geom_point()+theme_classic()+geom_smooth(method = "glm",se=F)
-summary(lm(metadata.sam$hour~metadata.sam$sampleread))
-#pink
-metadata.sam.p=metadata.sam %>% filter(sponge_type=="SP.PINK")
-summary(lm(metadata.sam.p$hour~metadata.sam.p$sampleread))
-#cream
-metadata.sam.c=metadata.sam %>% filter(sponge_type=="SP.CREAM")
-summary(lm(metadata.sam.c$hour~metadata.sam.c$sampleread))
-#water
-metadata.sam.w=metadata.sam %>% filter(sponge_type=="WATER")
-summary(lm(metadata.sam.w$hour~metadata.sam.w$sampleread))
-plot(TukeyHSD(aov(metadata.sam$sampleread~metadata.sam$sponge_type)))
-```
-A:cream and water total reads decrease along time, but pink not.
-
-Q3:what is the pattern of each sponge and water according to species richness and community
-now look at α diversity
-```{r incidence lm model}
-OTU.sam2<- data.frame(apply(OTU.sam2,2,as.numeric))
-OTU.sam2$incidence=rowSums(OTU.sam2)
-OTU.full.i=bind_cols(metadata.sam,OTU.sam2)
-OTU.full.i=OTU.full.i %>% filter(sponge_type =="WATER" | sponge_type =="SP.PINK" | sponge_type =="SP.CREAM")
+OTU.full.i=bind_cols(metadata.sam,OTU.sam)
+#OTU.full.i=OTU.full.i %>% filter(sponge_type =="WATER" | sponge_type =="SP.PINK" | sponge_type =="SP.CREAM")
 sample_data<-read.csv("sampledata_full_20211207.csv", header=TRUE)
 #sample_data=arrange(sample_data,name)
 sample_data=left_join(sample_data,OTU.full.i,by="name")
 rownames(sample_data)=sample_data$name
 sample_data=sample_data%>%filter(sponge_type.x=="SP.PINK" | sponge_type.x=="SP.BLACK" |sponge_type.x=="SP.CREAM" | sponge_type.x=="WATER")
 sample_data[is.na(sample_data)]<-0
-OTU.full.i=sample_data%>%select(tank.x:sponge_type.x,Amphiprion_ocellaris:incidence)
+OTU.full.i=sample_data%>%select(tank.x:sponge_type.x,Amphiprion_ocellaris:Gramma_loreto)
 names(OTU.full.i)[1:6]=c("tank","hour","hours_fish","date","time","sponge_type")
 
 OTU.full.i <- OTU.full.i %>%
   mutate(
     hours_fish = case_when(
-      hours_fish == "0" ~ "fish",
-      hours_fish == "20" ~ "20h",
-      hours_fish == "24" ~ "24h",
-      hours_fish == "28" ~ "28h",
-      hours_fish == "44" ~ "52h",
-      hours_fish == "68" ~ "76h",
-      hours_fish == "92" ~ "100h",
+      hours_fish == "0" ~ "0",
+      hours_fish == "20" ~ "20",
+      hours_fish == "24" ~ "24",
+      hours_fish == "28" ~ "28",
+      hours_fish == "44" ~ "52",
+      hours_fish == "68" ~ "76",
+      hours_fish == "92" ~ "100",
       TRUE ~ as.character(hours_fish)
     )
   )
@@ -305,28 +245,90 @@ OTU.full.i <- OTU.full.i %>%
 OTU.full.i <- OTU.full.i %>%
   mutate(
     sponge_type = case_when(
-      sponge_type == "SP.BLACK" ~ "BLACK",
-      sponge_type == "SP.PINK" ~ "PINK",
-      sponge_type == "SP.CREAM" ~ "CREAM",
+      sponge_type == "SP.BLACK" ~ "Chondrilla",
+      sponge_type == "SP.PINK" ~ "Darwinella",
+      sponge_type == "SP.CREAM" ~ "Axinyssa",
       TRUE ~ as.character(sponge_type)
     )
   )
-OTU.full.i$sponge_type=as.factor(OTU.full.i$sponge_type)
-
 OTU.full.i$hours_fish=as.factor(OTU.full.i$hours_fish)
 OTU.full.i$hour=as.numeric(OTU.full.i$hour)
-
-OTU.full.i$hours_fish=factor(OTU.full.i$hours_fish,levels = c('fish','20h','24h','28h','52h','76h','100h')) 
-OTU.full.i$sponge_type=as.factor(as.character(OTU.full.i$sponge_type))
 OTU.full.i$tank=as.factor(as.character(OTU.full.i$tank))
+OTU.full.i$hours_fish=factor(OTU.full.i$hours_fish,levels = c('0','20','24','28','52','76','100')) 
+OTU.full.i$sponge_type=as.factor(as.character(OTU.full.i$sponge_type))
 
-ggplot(OTU.full.i, aes(x=factor(hours_fish), y=incidence,fill=sponge_type)) + 
+OTU.sam=OTU.full.i%>%select(Amphiprion_ocellaris:Gramma_loreto)
+OTU.sam2=OTU.full.i%>%select(Amphiprion_ocellaris:Gramma_loreto)
+OTU.sam2[OTU.sam2 > 0] <- 1
+OTU.sam2<- data.frame(apply(OTU.sam2,2,as.numeric))
+```
+
+```{r}
+speciesinfo.t=data.frame(detection=colSums(OTU.sam2),logreads=colSums(OTU.sam),
+name=c("Amphiprion ocellaris","Chromis viridis","Zebrasoma veliferum","Hippocampus semispinosis","Gramma loreto"))
+
+ggplot(data = speciesinfo.t,aes(x = detection, y = logreads,label=name))+geom_point()+theme_classic()+ylab("log(reads)")+geom_smooth(method = "lm",se=T)+geom_text_repel(size=2)+scale_x_continuous(limits=c(0,35),breaks=seq(5,35,5))
+#seprate sample type,c("SP.CREAM","SP.PINK","WATER")
+OTU.sam.p=OTU.sam %>% filter(OTU.full.i$sponge_type=="Darwinella")
+OTU.sam.p2=OTU.sam.p
+OTU.sam.p2[OTU.sam.p2 > 0] <- 1
+speciesinfo.p=data.frame(detection=colSums(OTU.sam.p2),logreads=colSums(OTU.sam.p),
+name=c("Amphiprion ocellaris","Chromis viridis","Zebrasoma veliferum","Hippocampus semispinosis","Gramma loreto"))
+speciesinfo.p$sample="Darwinella"
+OTU.sam.c=OTU.sam %>% filter(OTU.full.i$sponge_type=="Axinyssa")
+OTU.sam.c2=OTU.sam.c
+OTU.sam.c2[OTU.sam.c2 > 0] <- 1
+speciesinfo.c=data.frame(detection=colSums(OTU.sam.c2),logreads=colSums(OTU.sam.c),
+name=c("Amphiprion ocellaris","Chromis viridis","Zebrasoma veliferum","Hippocampus semispinosis","Gramma loreto"))
+speciesinfo.c$sample="Axinyssa"
+OTU.sam.w=OTU.sam %>% filter(OTU.full.i$sponge_type=="WATER")
+OTU.sam.w2=OTU.sam.w
+OTU.sam.w2[OTU.sam.w2 > 0] <- 1
+speciesinfo.w=data.frame(detection=colSums(OTU.sam.w2),logreads=colSums(OTU.sam.w),
+name=c("Amphiprion ocellaris","Chromis viridis","Zebrasoma veliferum","Hippocampus semispinosis","Gramma loreto"))
+speciesinfo.w$sample="WATER"
+speciesinfo=bind_rows(speciesinfo.w,speciesinfo.p,speciesinfo.c)
+col=c("#FFB90F","#8B008B", "#7AC5CD")
+names(speciesinfo)=c("Detection","logreads","Species","Sample type")
+
+#A: for all, Adjusted R-squared:  0.9727 p= 0.00125 ** high relation
+#Q2:Does reads and detection rate relate to time, differ from type?
+
+#total
+OTU.full.i$sampleread=rowSums(OTU.sam)
+p1=ggplot(data = OTU.full.i,aes(x = hour, y = sampleread,color=sponge_type))+geom_point()+theme_classic()+geom_smooth(method = "glm",se=F)+scale_color_manual(values=c("#FFB90F","#8B7D6B","#8B008B","#7AC5CD"))+ylab("Log(reads)")+xlab("Time (hour)")+scale_x_continuous( limits=c(0,100),breaks=c(0,20,24,28,52,76,100))+scale_y_continuous( limits=c(0,30))+ theme(legend.position = 'none')
+p1
+p2=ggplot(data = speciesinfo,aes(x = Detection, y = logreads,color=`Sample type`,shape=Species))+geom_point()+theme_classic()+ylab("Log(reads)")+xlab("Detection")+scale_x_continuous(limits=c(0,10),breaks=seq(0,10,1))+scale_color_manual(values=col)+guides(fill=guide_colorbar(lable=TRUE,lable.theme=element_text(size=10,face="italic",angle = 45)))#+geom_text_repel(size=2)
+p2
+ggpubr::ggarrange(p1,p2,ncol=2,nrow=1,labels=c("A","B"),common.legend = F)
+
+OTU.full.i2=OTU.full.i%>%filter(sponge_type!="Chondrilla")
+summary(lm(OTU.full.i2$hour~OTU.full.i2$sampleread))
+#rm(OTU.full.i2,speciesinfo,speciesinfo.c,speciesinfo.p,speciesinfo.w,speciesinfo.t)
+
+#pink
+metadata.sam.p=OTU.full.i %>% filter(sponge_type=="Darwinella")
+summary(lm(metadata.sam.p$hour~metadata.sam.p$sampleread))
+#cream
+metadata.sam.c=OTU.full.i %>% filter(sponge_type=="Axinyssa")
+summary(lm(metadata.sam.c$hour~metadata.sam.c$sampleread))
+#water
+metadata.sam.w=OTU.full.i %>% filter(sponge_type=="WATER")
+summary(lm(metadata.sam.w$hour~metadata.sam.w$sampleread))
+TukeyHSD(aov(OTU.full.i$sampleread~OTU.full.i$sponge_type))
+```
+A:cream and water total reads decrease along time, but pink not.
+
+Q3:what is the pattern of each sponge and water according to species richness and community
+now look at α diversity
+```{r incidence lm model}
+OTU.full.i$incidence=rowSums(OTU.sam2)
+p1=ggplot(OTU.full.i, aes(x = hour, y = incidence, color=sponge_type)) +geom_jitter(aes(colour=sponge_type),height=0.0,width =0.8,size=1.5)+geom_smooth(method = "lm",se=F)+ylab("Observed species richness")+xlab("Time (hour)")+scale_color_manual(values=c("#FFB90F","#8B7D6B","#8B008B","#7AC5CD"))+theme_bw()+theme(panel.grid=element_blank())+theme(legend.title=element_blank())+scale_x_continuous( limits=c(0,100),breaks=c(0,20,24,28,52,76,100))+scale_y_continuous( limits=c(0,3),breaks=c(0,1,2,3))
+p2=ggplot(OTU.full.i, aes(x=factor(hours_fish), y=incidence,fill=sponge_type)) + 
   geom_boxplot() +
   geom_jitter(width =0.1,size=1,height=0)+ 
-  theme_bw()+ylab("Observed species richness")+xlab("Time (hour)")+scale_fill_manual(values=c("#8B7D6B", "#FFB90F", "#8B008B","#7AC5CD"))+theme_bw() + 
+  theme_bw()+ylab("Observed species richness")+xlab("Time (hour)")+scale_fill_manual(values=c("#FFB90F","#8B7D6B","#8B008B","#7AC5CD"))+theme_bw() + 
   theme(axis.ticks = element_blank()) +theme(panel.grid=element_blank())+ theme(legend.title=element_blank()) #+geom_smooth(method = "loess", se=FALSE, color="black", aes(group=sponge_type))
-
-p2=ggplot(OTU.full.i, aes(x = hour, y = incidence, color=sponge_type)) +geom_jitter(aes(colour=sponge_type),height=0.0,width =0.8,size=1.5)+geom_smooth(method = "lm",se=F)+ylab("Observed species richness")+xlab("Time (hour)")+scale_color_manual(values=c("#8B7D6B", "#FFB90F", "#8B008B","#7AC5CD"))+theme_bw()+theme(panel.grid=element_blank())+theme(legend.title=element_blank())+scale_x_continuous( limits=c(0,100),breaks=c(0,20,24,28,52,76,100))+scale_y_continuous( limits=c(0,3),breaks=c(0,1,2,3))
 ggpubr::ggarrange(p1,p2,ncol=2,nrow=1,labels=c("A","B"),common.legend = T)
 
 #LM
@@ -334,12 +336,12 @@ OTU.full.i.WATER=OTU.full.i%>%filter(sponge_type=="WATER")
 lm.WATER<-lm(OTU.full.i.WATER$incidence~OTU.full.i.WATER$hour)
 summary(lm.WATER)# p-value =0.000737 ***,r2=0.4308
 
-OTU.full.i.PINK=OTU.full.i%>%filter(sponge_type=="PINK")
-lm.pink<-lm(OTU.full.i.PINK$hour~OTU.full.i.PINK$incidence)
-summary(lm.pink)# p-value =0.1403,r2=0.07186
+OTU.full.i.PINK=OTU.full.i%>%filter(sponge_type=="Darwinella")
+lm.pink<-lm(OTU.full.i.PINK$incidence~OTU.full.i.PINK$hour)
+summary(lm.pink)# p-value =0.378,r2=-0.009
 
-OTU.full.i.CREAM=OTU.full.i%>%filter(sponge_type=="CREAM")
-lm.CREAM<-lm(OTU.full.i.CREAM$hour~OTU.full.i.CREAM$incidence)
+OTU.full.i.CREAM=OTU.full.i%>%filter(sponge_type=="Axinyssa")
+lm.CREAM<-lm(OTU.full.i.CREAM$incidence~OTU.full.i.CREAM$hour)
 summary(lm.CREAM)# p-value =0.005975**,r2=0.3
 ```
 
@@ -348,7 +350,7 @@ fit1<-aov(incidence~sponge_type,data=OTU.full.i)
 summary(fit1)
 #sponge_type  3  17.65   5.885   7.471 0.000182 ***
 #remove black sponge
-OTU.full.i2=OTU.full.i%>%filter(sponge_type!="SP.BLACK")
+OTU.full.i2=OTU.full.i%>%filter(sponge_type!="BLACK")
 OTU.full.i2$sponge_type=as.factor(as.character(OTU.full.i2$sponge_type))
 leveneTest(incidence~sponge_type,data=OTU.full.i2)# 0.1842
 fit2<-aov(incidence~sponge_type,data=OTU.full.i2)
@@ -383,42 +385,117 @@ TukeyHSD(aov(incidence~sponge_type,data=OTU.full.i2))
 ```
 the beta diversity analysis base on no black data
 ```{r mvabund}
-OTU.sam2=OTU.sam2 %>%select(-incidence)
+OTU.sam2=OTU.sam2 %>%filter(OTU.full.i$sponge_type!="BLACK" )
+metadata.sam=OTU.full.i %>%filter(OTU.full.i$sponge_type!="BLACK")%>%select(hour,hours_fish,tank,sponge_type)
+metadata.sam$sponge_type=as.factor(as.character(metadata.sam$sponge_type))
+metadata.sam$tank=as.factor(as.character(metadata.sam$tank))
+
 communityB.mvb <- mvabund(OTU.sam2)  
+is.mvabund(communityB.mvb) # checking that the arthmvabund dataset is properly formatted
+meanvar.plot(communityB.mvb,col=as.numeric(metadata.sam$sponge_type))
+#plot(communityB.mvb ~ metadata.sam$sponge_type) # predictor must be a factor
 nboot <- 999
 #base model1 for sponge_type
-modt1.mvb <- manyglm(communityB.mvb~sponge_type, family="negative.binomial",data=metadata.sam)
-plot(modt1.mvb)
+modt1.mvb <- manyglm(communityB.mvb~sponge_type*hour*tank, family="negative.binomial",data=metadata.sam)
+plot(modt1.mvb, res.type="pit.norm") 
 anova(modt1.mvb,cor.type = "shrink", test = "score", show.time = "all", nBoot = nboot)
 #                   Res.Df   Df.diff   score      Pr(>score)
-#sponge_type     56       4            0.001 ***
-modt2.mvb <- manyglm(communityB.mvb~tank, family="binomial",data=metadata.sam)
-plot(modt2.mvb)
-anova(modt2.mvb,cor.type = "shrink", test = "score", show.time = "all", nBoot = nboot)
-#tank            56       4            0.001 ***
-
+#(Intercept)               62                             
+#sponge_type               60       2  6.25      0.635    
+#hour                      59       1 13.11      0.003 ** 
+# tank                      57       2 38.54      0.001 ***
+# sponge_type:hour          55       2  9.08      0.148    
+# sponge_type:tank          51       4  2.45      0.963    
+# hour:tank                 49       2  1.31      0.825    
+# sponge_type:hour:tank     45       4  8.41      0.058 . 
+str(metadata.sam.c)
 communityB.mvb <- mvabund(OTU.sam.c2) 
+is.mvabund(communityB.mvb) 
 modt3.mvb <- manyglm(communityB.mvb~hour*tank, family="binomial",data=metadata.sam.c)
 plot(modt3.mvb)
 anova(modt3.mvb,cor.type = "shrink", test = "score", show.time = "all", nBoot = nboot)
-#hour            19       1 10.44      0.021 *  
-#tank            15       4            0.001 ***
-#hour:tank       15       3            0.001 ***
+#            Res.Df Df.diff  score Pr(>score)   
+#(Intercept)     20                             
+#hour            19       1 10.567      0.025 * 
+#tank            17       2 17.943      0.008 **
+#hour:tank       15       2  8.792      0.018 * 
+str(metadata.sam.p)
 communityB.mvb <- mvabund(OTU.sam.p2) 
 modt4.mvb <- manyglm(communityB.mvb~hour*tank, family="binomial",data=metadata.sam.p)
 plot(modt4.mvb)
 anova(modt4.mvb,cor.type = "shrink", test = "score", show.time = "all", nBoot = nboot)
-#hour            17       1 2.846      0.529    
-#tank            13       4            0.001 ***
-#hour:tank       13       3            0.001 ***
+#(Intercept)     20                            
+#hour            19       1  1.266      0.824  
+#tank            17       2 14.004      0.046 *
+#hour:tank       15       2  4.281      0.445  
+
+str(metadata.sam.w)
 communityB.mvb <- mvabund(OTU.sam.w2) 
 modt5.mvb <- manyglm(communityB.mvb~hour*tank, family="binomial",data=metadata.sam.w)
 plot(modt5.mvb)
 anova(modt5.mvb,cor.type = "shrink", test = "score", show.time = "all", nBoot = nboot)
-#hour            17       1 13.46      0.007 ** 
-#tank            13       4            0.001 ***
-#hour:tank       13       3            0.001 ***
+
+#            Res.Df Df.diff  score Pr(>score)   
+#(Intercept)     20                             
+#hour            19       1 12.304      0.004 **
+#tank            17       2 21.912      0.002 **
+#hour:tank       15       2  1.645      0.657   
 ```
+PERMANOVA
+```{r}
+exclude = which(rowSums(OTU.sam2) == 0)
+OTU.sam3=OTU.sam2[-exclude,]
+metadata.sam2=metadata.sam[-exclude,]
+mo1.ads <- adonis(OTU.sam3 ~ sponge_type*hour*tank, data=metadata.sam2, method="jaccard", perm=999)
+mo1.ads
+#                       Df SumsOfSqs MeanSqs F.Model      R2 Pr(>F)    
+# sponge_type            2    0.3618 0.18092  1.4016 0.04813  0.231    
+# hour                   1    0.1548 0.15478  1.1990 0.02059  0.328    
+# tank                   2    2.2765 1.13826  8.8178 0.30281  0.001 ***
+# sponge_type:hour       2    0.4947 0.24737  1.9163 0.06581  0.100 .  
+# sponge_type:tank       4    0.7396 0.18489  1.4323 0.09837  0.164    
+# hour:tank              2    0.4122 0.20612  1.5967 0.05483  0.153    
+# sponge_type:hour:tank  4    0.8837 0.22093  1.7115 0.11755  0.080 .  
+# Residuals             17    2.1945 0.12909         0.29190           
+# Total                 34    7.5179                 1.00000          
+
+exclude = which(rowSums(OTU.sam.w2) == 0)
+OTU.sam.w3=OTU.sam.w2[-exclude,]
+metadata.sam.w2=metadata.sam.w[-exclude,]
+mo2.ads <- adonis(OTU.sam.w3 ~ hour*tank, data=metadata.sam.w2, method="jaccard", perm=999)
+# mo2.ads
+#           Df SumsOfSqs MeanSqs F.Model      R2 Pr(>F)    
+# hour       1   0.43739 0.43739  6.3944 0.21651  0.001 ***
+# tank       2   0.93113 0.46556  6.8063 0.46091  0.001 ***
+# hour:tank  2   0.30968 0.15484  2.2637 0.15329  0.080 .  
+# Residuals  5   0.34201 0.06840         0.16929           
+# Total     10   2.02020                 1.00000 
+
+exclude2 = which(rowSums(OTU.sam.c2) == 0)
+OTU.sam.c3=OTU.sam.c2[-exclude2,]
+metadata.sam.c2=metadata.sam.c[-exclude2,]
+mo3.ads <- adonis(OTU.sam.c3 ~ hour*tank, data=metadata.sam.c2, method="jaccard", perm=999)
+mo3.ads
+#           Df SumsOfSqs MeanSqs F.Model      R2 Pr(>F)    
+# hour       1   0.33386 0.33386  6.8071 0.18060  0.004 ** 
+# tank       2   0.97962 0.48981  9.9867 0.52992  0.001 ***
+# hour:tank  2   0.33895 0.16947  3.4554 0.18335  0.030 *  
+# Residuals  4   0.19618 0.04905         0.10613           
+# Total      9   1.84861                 1.00000   
+exclude2 = which(rowSums(OTU.sam.p2) == 0)
+OTU.sam.p3=OTU.sam.p2[-exclude2,]
+metadata.sam.p2=metadata.sam.c[-exclude2,]
+mo4.ads <- adonis(OTU.sam.p3 ~ hour*tank, data=metadata.sam.p2, method="jaccard", perm=999)
+mo4.ads
+
+#           Df SumsOfSqs MeanSqs F.Model      R2 Pr(>F)
+# hour       1    0.0561 0.05613 0.27111 0.01707  0.772
+# tank       2    0.9275 0.46374 2.23991 0.28215  0.124
+# hour:tank  2    0.6473 0.32366 1.56334 0.19692  0.204
+# Residuals  8    1.6563 0.20703         0.50385       
+# Total     13    3.2872                 1.00000 
+```
+
 plot pyramid: community change along time
 ```{r Pyramid}
 brewer.pal(n =11, name = "RdYlBu")
@@ -426,18 +503,7 @@ col1=c("#E41A1C", "#FB8072", "#377EB8" )
 col2=c("#E41A1C", "#FB8072", "#80B1D3" )
 col3=c("#E41A1C", "#FB8072", "#ABD9E9" )
 
-OTU.full=bind_cols(metadata.sam,OTU.sam)
-OTU.full=OTU.full %>% filter(sponge_type =="WATER" | sponge_type =="SP.PINK" | sponge_type =="SP.CREAM")
-sample_data<-read.csv("sampledata_full_20211207.csv", header=TRUE)
-#sample_data=arrange(sample_data,name)
-sample_data=left_join(sample_data,OTU.full,by="name")
-rownames(sample_data)=sample_data$name
-sample_data=sample_data%>%filter(sponge_type.x=="SP.PINK" | sponge_type.x=="SP.BLACK" |sponge_type.x=="SP.CREAM" | sponge_type.x=="WATER")
-sample_data[is.na(sample_data)] <- 0
-OTU.full=sample_data%>%select(tank.x:sponge_type.x,Amphiprion_ocellaris:Gramma_loreto)
-names(OTU.full)[1:6]=c("tank","hour","hours_fish","date","time","sponge_type")
-
-OTU.full2=OTU.full %>% filter(OTU.full$tank=="TANKB" & OTU.full$sponge_type =="SP.CREAM")
+OTU.full2=OTU.full.i %>% filter(OTU.full.i$tank=="TANKB" & OTU.full.i$sponge_type =="CREAM")
 rowname=OTU.full2$name
 OTU.full3=OTU.full2 %>% select(Amphiprion_ocellaris:Gramma_loreto)
 exclude2 = which(colSums(OTU.full3) == 0)
